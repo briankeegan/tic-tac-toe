@@ -35,7 +35,7 @@ const checkForWinner = function () {
     // This is clunky. Come back and fix
     return ['Draw!', 'Draw']
   } else {
-    return [`Game in progress!, it's ${turn}'s turn'`, turn]
+    return [`Game in progress! It's ${turn}'s turn'`, turn]
   }
 }
 const makeMove = function (index, element) {

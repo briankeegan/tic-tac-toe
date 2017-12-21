@@ -28,7 +28,8 @@
               <li><a href="#" data-toggle="modal" data-target="#signInModal">Sign In</a></li>
               <li><a href="#" data-toggle="modal" data-target="#signUpModal">Sign Up</a></li>
               <li><a href="#" data-toggle="modal" data-target="#changePasswordModal">Change Password</a></li>
-              <li><a href="#" data-toggle="modal" data-target="#playerStatsModal">Player Stats</a></li>
+              <li><a href="#" data-toggle="modal" data-target="#playerStatsModal" id="playerStatsButton">Player Stats</a></li>
+              <li><a href="#" id="newgame">New Game</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -149,7 +150,11 @@
               </div>
               <div class="modal-body">
                 <form id="player-stats">
-                  Add "Player Stats" content here
+                  <p>Games played:<span id="played"></span></p>
+                  <p>Games won:<span id="won"></span></p>
+                  <p>Games lost:<span id="lost"></span></p>
+                  <p>Games tied:<span id="tied"></span></p>
+                  <p>Unfinished Games:<span id="unfinished"></span></p>
                 </form>
               </div>
               <div class="modal-footer">
