@@ -1,7 +1,7 @@
 $ttt-width: 700px;
 $none: 0;
 $max-width: 100%;
-$foot-height: 50px;
+$norm-height: 50px;
 
 .box {
   height: $ttt-width / 3;
@@ -9,10 +9,14 @@ $foot-height: 50px;
 }
 
 footer {
-  height: $foot-height;
+  height: $norm-height;
   width: $max-width;
 }
 
 .ttt-container {
   width: $ttt-width;
+}
+
+.message-container {
+  height: $norm-height * 1.5;
 }

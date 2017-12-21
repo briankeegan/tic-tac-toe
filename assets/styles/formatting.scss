@@ -1,7 +1,11 @@
 footer {
   bottom: 0;
   left: 0;
-  line-height: $foot-height;
+  line-height: $norm-height;
   position: fixed;
+  text-align: center;
+}
+
+.message {
   text-align: center;
 }
