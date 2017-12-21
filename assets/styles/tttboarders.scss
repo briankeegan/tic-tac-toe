@@ -4,6 +4,11 @@
   border-width: $top $right $bottom $left;
 }
 
+.box {
+  font-size: $ttt-width / 4 ;
+  text-align: center;
+}
+
 .box0 {
   $params: (0 1px 1px 0);
   @include tic-border($params...)

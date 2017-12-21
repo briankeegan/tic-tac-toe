@@ -38,7 +38,7 @@ const checkForWinner = function () {
     return [`Game in progress!, it's ${turn}'s turn'`, turn]
   }
 }
-const makeMove = function (index) {
+const makeMove = function (index, element) {
   const status = checkForWinner()
   if (Array.isArray(status[1])) {
     return status[0] + ' Game is over!'
@@ -50,6 +50,7 @@ const makeMove = function (index) {
 It's still ${tokenOpposites[status[1]]}'s turn'`
     } else {
       board[index] = status[1]
+      element.innerHTML = status[1]
       return checkForWinner()[0]
     }
   }
