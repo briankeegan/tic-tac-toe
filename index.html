@@ -31,7 +31,7 @@
               <li><a href="#" data-toggle="modal" data-target="#playerStatsModal">Player Stats</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#">About </a></li>
+              <li><a href="#" data-toggle="modal" data-target="#aboutModal">About </a></li>
             </ul>
           </div>
         </div>
@@ -56,6 +56,120 @@
             <div class="col-xs-4 box box2-0"></div>
             <div class="col-xs-4 box box2-1"></div>
             <div class="col-xs-4 box box2-2"></div>
+          </div>
+        </div>
+        <!-- Modals -->
+        <!-- signInModal -->
+        <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModal" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Log in</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+              </div>
+              <div class="modal-body">
+                <form id="sign-in">
+                  <input name="user[email]" type="text" placeholder="Email" />
+                  <input name="user[password]" type="password" placeholder="Password" />
+                  <input type="submit" class="btn btn-primary" value="Submit!" />
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- signUpModal -->
+        <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModal" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Sign Up</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+              </div>
+              <div class="modal-body">
+                <form id="sign-up">
+                  <input name="user[email]" type="text" placeholder="Email" />
+                  <input name="user[password]" type="password" placeholder="Password" />
+                  <input name="user[password-dup]" type="password" placeholder="Retype Password" />
+                  <input type="submit" class="btn btn-primary" value="Submit!" />
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- changePasswordModal -->
+        <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="changePasswordModal" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Change Password</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+              </div>
+              <div class="modal-body">
+                <form id="change-password">
+                  <input name="user[password]" type="password" placeholder="Current Password" />
+                  <input name="user[new-password]" type="password" placeholder="New Password" />
+                  <input name="user[password-dup]" type="password" placeholder="Retype New Password" />
+                  <input type="submit" class="btn btn-primary" value="Submit!" />
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- playerStatsModal -->
+        <div class="modal fade" id="playerStatsModal" tabindex="-1" role="dialog" aria-labelledby="playerStatsModal" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Player Stats</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+              </div>
+              <div class="modal-body">
+                <form id="player-stats">
+                  Add "Player Stats" content here
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- aboutModal -->
+        <div class="modal fade" id="aboutModal" tabindex="-1" role="dialog" aria-labelledby="aboutModal" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">About</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+              </div>
+              <div class="modal-body">
+                <form id="about">
+                  Add "About" content here
+                </form>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
           </div>
         </div>
 
