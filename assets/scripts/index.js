@@ -9,9 +9,17 @@ $(() => {
 })
 
 $(() => {
-  console.log(tttlogic.checkForWinner(['x', 'x', 'o',
-                                      'x', 'o', 'x',
-                                      'o', 'o', 'x']))
+  console.log(tttlogic.makeMove(0))
+  console.log(tttlogic.makeMove(4))
+  console.log(tttlogic.makeMove(1))
+  console.log(tttlogic.makeMove(7))
+  console.log(tttlogic.makeMove(2))
+  console.log(tttlogic.makeMove(0))
+  console.log(tttlogic.makeMove(6))
+  console.log(tttlogic.makeMove(7))
+  console.log(tttlogic.makeMove(8))
+  // console.log(tttlogic.makeMove(8))
+  console.log(tttlogic.board)
 })
 
 // use require with a reference to bundle the file and use it in this file
