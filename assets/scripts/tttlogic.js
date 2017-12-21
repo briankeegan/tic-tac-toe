@@ -4,6 +4,14 @@ const createBoard = function (input) {
   return input || ['', '', '', '', '', '', '', '', '', '', '', '']
 }
 
+const checkForWinner = function (board) {
+  // If all mvoes have been made with no winner, its a draw
+  if (board.every(move => move !== '')) {
+    return 'Draw'
+  }
+}
+
 module.exports = {
-  createBoard
+  createBoard,
+  checkForWinner
 }
