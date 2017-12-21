@@ -2,8 +2,7 @@
 
 const setAPIOrigin = require('../../lib/set-api-origin')
 const config = require('./config')
-const tttlogic = require('./tttlogic')
-const authEvents = require('./authevents')
+const authEvents = require('./authentication/events')
 
 $(() => {
   setAPIOrigin(location, config)
