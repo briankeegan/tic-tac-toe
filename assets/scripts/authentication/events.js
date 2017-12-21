@@ -3,6 +3,7 @@
 const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require(`./api`)
 const ui = require(`./ui`)
+const store = require('../store')
 
 const onSignUp = function (event) {
   const data = getFormFields(this)
@@ -35,10 +36,21 @@ const onChangePassword = function (event) {
   }
 }
 
+const onLogout = function () {
+  if (store.user1) {
+    event.preventDefault()
+    api.logout()
+      .then(ui.logoutSuccess)
+      .catch(ui.logoutFailure)
+  } else {
+    ui.logoutFailure()
+  }
+}
 const addHandler = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
+  $('#logout').on('submit', onLogout)
 }
 
 module.exports = {
