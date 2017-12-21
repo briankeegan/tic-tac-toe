@@ -1,9 +1,9 @@
 'use strict'
 
-const tester = function () {
-  console.log('Tester works')
+const createBoard = function (input) {
+  return input || ['', '', '', '', '', '', '', '', '', '', '', '']
 }
 
 module.exports = {
-  tester
+  createBoard
 }
