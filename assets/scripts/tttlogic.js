@@ -20,6 +20,7 @@ const checkForWinningMove = function (token, board, indexes) {
 
 const checkForWinner = function (board) {
   const turns = board.filter(move => move !== '').length
+  const turn = turns % 2 === 0 ? tokens[0] : tokens[1]
   for (let i = 0; i < winningCombos.length; i++) {
     if (checkForWinningMove(tokens[0], board, winningCombos[i])) {
       return 'You won!' + winningCombos[i]
@@ -32,7 +33,7 @@ const checkForWinner = function (board) {
   if (turns === 9) {
     return 'Draw'
   } else {
-    return 'Game in progress!'
+    return `Game in progress!  It's ${turn}'s turn'`
   }
 }
 
