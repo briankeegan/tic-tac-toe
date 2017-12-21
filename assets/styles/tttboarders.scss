@@ -4,47 +4,47 @@
   border-width: $top $right $bottom $left;
 }
 
-.box0-0 {
+.box0 {
   $params: (0 1px 1px 0);
   @include tic-border($params...)
 }
 
-.box0-1 {
+.box1 {
   $params: (0 1px 1px 1px);
   @include tic-border($params...)
 }
 
-.box0-2 {
+.box2 {
   $params: (0 0 1px 1px);
   @include tic-border($params...)
 }
 
-.box1-0 {
+.box3 {
   $params: (1px 1px 1px 0);
   @include tic-border($params...)
 }
 
-.box1-1 {
+.box4 {
   $params: (1px 1px 1px 1px);
   @include tic-border($params...)
 }
 
-.box1-2 {
+.box5 {
   $params: (1px 0 1px 1px);
   @include tic-border($params...)
 }
 
-.box2-0 {
+.box6 {
   $params: (1px 1px 0 0);
   @include tic-border($params...)
 }
 
-.box2-1 {
+.box7 {
   $params: (1px 1px 0 1px);
   @include tic-border($params...)
 }
 
-.box2-2 {
+.box8 {
   $params: (1px 0 0 1px);
   @include tic-border($params...)
 }
