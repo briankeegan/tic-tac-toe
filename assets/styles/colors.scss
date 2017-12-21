@@ -1,0 +1,15 @@
+$color1: rgba(0, 38, 66, 1); // Dark blue
+$color2: rgba(132, 0, 50, 1); // Red
+$color3: rgba(255, 119, 3, 1); // Orange
+$color4: rgba(229, 218, 218, 1); // Light Grey
+$color5: rgba(2, 4, 15, 1); // Black
+
+body {
+  background-color: $color4;
+  color: $color1;
+}
+
+footer {
+  background-color: $color5;
+  color: darken($color4, 20%);
+}
