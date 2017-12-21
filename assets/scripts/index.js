@@ -9,7 +9,9 @@ $(() => {
 })
 
 $(() => {
-  console.log(tttlogic.checkForWinner(['x', 'x', 'x', 'y', 'x', 'x', 'x', 'x', 'x', 'x', 'x', 'x']))
+  console.log(tttlogic.checkForWinner(['x', 'x', 'o',
+                                      'o', 'o', 'x',
+                                      'x', 'o', 'x']))
 })
 
 // use require with a reference to bundle the file and use it in this file
