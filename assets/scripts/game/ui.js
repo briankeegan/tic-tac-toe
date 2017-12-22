@@ -1,6 +1,7 @@
 'use strict'
 
 const store = require('../store')
+const logic = require('./logic')
 
 const processStats = function (data) {
   return {
@@ -13,9 +14,16 @@ const processStats = function (data) {
   }
 }
 
-const newGameSuccess = function (data) {
-  console.log(data)
+const setUpBoard = function (data) {
   store.game = data.game
+  store.board = logic.createBoard(store.game.cells)
+  store.board.forEach((token, i) => {
+    $('.box' + i).text(token)
+  })
+}
+
+const newGameSuccess = function (data) {
+  setUpBoard(data)
 }
 
 const newGameFailure = function () {
@@ -34,9 +42,18 @@ const getPlayersFailure = function () {
   console.error('failed to get games')
 }
 
+const openPreviousGameSuccess = function (data) {
+  setUpBoard(data)
+}
+const openPreviousGameFailure = function (error) {
+  console.error('Error retrieving game', error)
+}
+
 module.exports = {
   newGameSuccess,
   newGameFailure,
   getPlayersSuccess,
-  getPlayersFailure
+  getPlayersFailure,
+  openPreviousGameSuccess,
+  openPreviousGameFailure
 }

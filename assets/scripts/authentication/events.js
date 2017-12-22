@@ -36,7 +36,8 @@ const onChangePassword = function (event) {
   }
 }
 
-const onLogout = function () {
+const onLogout = function (event) {
+  event.preventDefault()
   if (store.user1) {
     event.preventDefault()
     api.logout()

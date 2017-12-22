@@ -12,7 +12,8 @@ const winningCombos = [
   [2, 4, 6]
 ]
 const createBoard = function (input) {
-  return input || ['', '', '', '', '', '', '', '', '']
+  // Not yet useful but thinking ahead for offline mode..
+  return Array.isArray(input) ? input : ['', '', '', '', '', '', '', '', '']
 }
 const board = createBoard()
 const checkForWinningMove = function (token, board, indexes) {

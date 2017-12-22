@@ -1,5 +1,6 @@
 'use strict'
 
+const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require(`./api`)
 const ui = require(`./ui`)
 // const store = require('../store')
@@ -29,6 +30,15 @@ const addHandler = function () {
   // SHOULD only allow clickable when  signed in, and new game
   $('.box').on('click', onMakeMove)
   $('#playerStatsButton').on('click', onGetPlayerStats)
+  $('#openPreviousGame').on('submit', onOpenPreviousGame)
+}
+
+const onOpenPreviousGame = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  api.openPreviousGame(data.game.id)
+    .then(ui.openPreviousGameSuccess)
+    .catch(ui.openPreviousGameFailure)
 }
 
 module.exports = {

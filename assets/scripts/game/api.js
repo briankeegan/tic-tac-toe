@@ -34,8 +34,19 @@ const getPlayerStats = function () {
   })
 }
 
+const openPreviousGame = function (id) {
+  return $.ajax({
+    url: config.apiOrigin + '/games/' + id,
+    method: 'GET',
+    headers: {
+      Authorization: 'Token token=' + store.user1.token
+    }
+  })
+}
+
 module.exports = {
   getPlayerStats,
   newGame,
-  sendMove
+  sendMove,
+  openPreviousGame
 }
