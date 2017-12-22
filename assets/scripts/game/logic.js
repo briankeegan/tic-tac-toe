@@ -1,7 +1,6 @@
 'use strict'
 const store = require('../store')
 const tokens = ['x', 'o']
-const tokenOpposites = {x: 'o', o: 'x'}
 const api = require(`./api`)
 const winningCombos = [
   [0, 1, 2],
@@ -48,8 +47,8 @@ const makeMove = function (index, element) {
     return status[0] + ' Game is over!'
   } else {
     if (board[index] !== '') {
-      return `You can't go where a peace is already been placed!
-It's still ${tokenOpposites[status[1]]}'s turn'`
+      return `You can't go where a token has already been placed!
+It's still ${status[1]}'s turn'`
     } else {
       board[index] = status[1]
       element.innerHTML = status[1]
@@ -63,7 +62,7 @@ It's still ${tokenOpposites[status[1]]}'s turn'`
           over: checkForWinner()[2]
         }
       }
-      api.sendMove(store.sendMove)
+      // api.sendMove(store.sendMove)
       return checkForWinner()[0]
     }
   }
