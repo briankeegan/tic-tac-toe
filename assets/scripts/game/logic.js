@@ -1,6 +1,7 @@
 'use strict'
 const tokens = ['x', 'o']
 const api = require(`./api`)
+const store = require(`../store`)
 const winningCombos = [
   [0, 1, 2],
   [3, 4, 5],
@@ -21,6 +22,7 @@ const checkForWinningMove = function (token, board, indexes) {
 }
 
 const checkForWinner = function () {
+  const board = store.board
   const turns = board.filter(move => move !== '').length
   const turn = turns % 2 === 0 ? tokens[0] : tokens[1]
   for (let i = 0; i < winningCombos.length; i++) {
@@ -40,10 +42,13 @@ const checkForWinner = function () {
   }
 }
 const makeMove = function (index, element) {
+  const board = store.board
+  if (!board) {
+    console.log('create new game, or find a previous one!')
+    return
+  }
   const status = checkForWinner()
-  if (Array.isArray(status[1])) {
-    return status[0] + ' Game is over!'
-  } else if (status[1] === 'Draw') {
+  if (status[2]) {
     return status[0] + ' Game is over!'
   } else {
     if (board[index] !== '') {
@@ -62,7 +67,7 @@ It's still ${status[1]}'s turn'`
           over: checkForWinner()[2]
         }
       }
-      // api.sendMove(move)
+      api.sendMove(move)
       return checkForWinner()[0]
     }
   }

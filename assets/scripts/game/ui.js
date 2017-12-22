@@ -20,6 +20,8 @@ const setUpBoard = function (data) {
   store.board.forEach((token, i) => {
     $('.box' + i).text(token)
   })
+  const message = logic.checkForWinner()[0]
+  $('#message').text(message)
 }
 
 const newGameSuccess = function (data) {
