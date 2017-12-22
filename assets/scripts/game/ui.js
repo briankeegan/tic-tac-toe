@@ -1,5 +1,7 @@
 'use strict'
 
+// const uimethods = require('../uimethods')
+
 const store = require('../store')
 const logic = require('./logic')
 

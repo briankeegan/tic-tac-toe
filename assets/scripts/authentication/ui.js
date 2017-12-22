@@ -44,6 +44,10 @@ const changePasswordFailure = function (error) {
 const logoutSuccess = function () {
   uimethods.updateMessage('Successfully signed out!')
   store.user1 = null
+  store.games = null
+  $('.after-sign-in').css('display', 'none')
+  $('.inital-page').toggle()
+  $('.box').text('')
 }
 
 const logoutFailure = function () {

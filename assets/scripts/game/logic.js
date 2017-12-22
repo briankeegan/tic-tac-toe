@@ -1,5 +1,7 @@
 'use strict'
 
+const uimethods = require('../uimethods')
+
 const tokens = ['x', 'o']
 const api = require(`./api`)
 const store = require(`../store`)
@@ -44,8 +46,12 @@ const checkForWinner = function (optionalBoard) {
 }
 const makeMove = function (index, element) {
   const board = store.board
+  if (!store.user1) {
+    uimethods.updateMessage('Log in to play the game!')
+    return
+  }
   if (!board) {
-    console.log('create new game, or find a previous one!')
+    uimethods.updateMessage('Create new game, or load a previous one!')
     return
   }
   const status = checkForWinner()
