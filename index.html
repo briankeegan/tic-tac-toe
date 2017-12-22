@@ -26,10 +26,10 @@
           <div class="collapse navbar-collapse" id="tttNavbar">
             <form class="navbar-form navbar-left" id="sign-in">
               <div class="input-group">
-                <input class="form-control" name="credentials[email]" type="text" placeholder="Email" autofocus />
+                <input class="form-control" name="credentials[email]" type="text" placeholder="Email" autofocus required/>
               </div>
               <div class="input-group">
-                <input class="form-control" name="credentials[password]" type="password" placeholder="Password" />
+                <input class="form-control" name="credentials[password]" type="password" placeholder="Password" required/>
               </div>
               <div class="input-group">
                 <div class="input-group-btn">
@@ -92,9 +92,9 @@
               </div>
               <div class="modal-body">
                 <form id="sign-up">
-                  <input name="credentials[email]" type="text" placeholder="Email" />
-                  <input name="credentials[password]" type="password" placeholder="Password" />
-                  <input name="credentials[password_confirmation]" type="password" placeholder="Retype Password" />
+                  <input name="credentials[email]" type="text" placeholder="Email" required/>
+                  <input name="credentials[password]" type="password" placeholder="Password" required/>
+                  <input name="credentials[password_confirmation]" type="password" placeholder="Retype Password" required/>
                   <input type="submit" class="btn btn-primary" value="Submit!" />
                 </form>
               </div>
@@ -116,9 +116,9 @@
               </div>
               <div class="modal-body">
                 <form id="change-password">
-                  <input name="passwords[old]" type="password" placeholder="Current Password" />
-                  <input name="passwords[new]" type="password" placeholder="New Password" />
-                  <input name="passwords[new-retyped]" type="password" placeholder="Retype New Password" />
+                  <input name="passwords[old]" type="password" placeholder="Current Password" required />
+                  <input name="passwords[new]" type="password" placeholder="New Password" required />
+                  <input name="passwords[new-retyped]" type="password" placeholder="Retype New Password"required />
                   <input type="submit" class="btn btn-primary" value="Submit!" />
                 </form>
               </div>
@@ -186,7 +186,7 @@
               </div>
               <div class="modal-body">
                 <form id="openPreviousGame">
-                  <input name="game[id]" type="number" placeholder="Game ID#" />
+                  <input name="game[id]" type="number" placeholder="Game ID#" required />
                   <input type="submit" class="btn btn-primary" value="Submit!" />
                 </form>
               </div>

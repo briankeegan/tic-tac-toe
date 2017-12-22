@@ -14,6 +14,7 @@ const signUpFailure = function (error) {
 
 const signInSuccess = function (data) {
   store.user1 = data.user
+  console.log(this)
   uimethods.updateMessage('Succesfully signed in as ' + store.user1.email)
 }
 
