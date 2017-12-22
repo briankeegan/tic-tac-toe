@@ -1,5 +1,7 @@
 'use strict'
 
+const store = require('../store')
+
 const processStats = function (data) {
   return {
     played: data.games.length || 0,
@@ -11,6 +13,15 @@ const processStats = function (data) {
   }
 }
 
+const newGameSuccess = function (data) {
+  console.log(data)
+  store.game = data.game
+}
+
+const newGameFailure = function () {
+  console.error('failed to create New Game')
+}
+
 const getPlayersSuccess = function (data) {
   const stats = processStats(data)
   Object.keys(stats).forEach(key => {
@@ -19,10 +30,12 @@ const getPlayersSuccess = function (data) {
 }
 
 const getPlayersFailure = function () {
-  console.log('failed to get games')
+  console.error('failed to get games')
 }
 
 module.exports = {
+  newGameSuccess,
+  newGameFailure,
   getPlayersSuccess,
   getPlayersFailure
 }

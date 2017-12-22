@@ -1,6 +1,8 @@
 'use strict'
+const store = require('../store')
 const tokens = ['x', 'o']
 const tokenOpposites = {x: 'o', o: 'x'}
+const api = require(`./api`)
 const winningCombos = [
   [0, 1, 2],
   [3, 4, 5],
@@ -24,18 +26,18 @@ const checkForWinner = function () {
   const turn = turns % 2 === 0 ? tokens[0] : tokens[1]
   for (let i = 0; i < winningCombos.length; i++) {
     if (checkForWinningMove(tokens[0], board, winningCombos[i])) {
-      return ['You won!', winningCombos[i]]
+      return ['You won!', winningCombos[i], true]
     }
     if (checkForWinningMove(tokens[1], board, winningCombos[i])) {
-      return ['You Lost!', winningCombos[i]]
+      return ['You Lost!', winningCombos[i], true]
     }
   }
   // If all moves have been made with no winner, its a draw
   if (turns === 9) {
     // This is clunky. Come back and fix
-    return ['Draw!', 'Draw']
+    return ['Draw!', 'Draw', true]
   } else {
-    return [`Game in progress! It's ${turn}'s turn'`, turn]
+    return [`Game in progress! It's ${turn}'s turn'`, turn, false]
   }
 }
 const makeMove = function (index, element) {
@@ -51,6 +53,17 @@ It's still ${tokenOpposites[status[1]]}'s turn'`
     } else {
       board[index] = status[1]
       element.innerHTML = status[1]
+      store.sendMove = {
+        game: {
+          cell: {
+            index: index,
+            value: status[1]
+          },
+          // Convoluted, must fix this whole section...
+          over: checkForWinner()[2]
+        }
+      }
+      api.sendMove(store.sendMove)
       return checkForWinner()[0]
     }
   }

@@ -3,7 +3,28 @@
 const store = require('../store')
 const config = require('../config')
 
-const onGetPlayerStats = function () {
+const newGame = function () {
+  return $.ajax({
+    url: config.apiOrigin + '/games',
+    method: 'POST',
+    headers: {
+      Authorization: 'Token token=' + store.user1.token
+    }
+  })
+}
+
+const sendMove = function (data) {
+  return $.ajax({
+    url: config.apiOrigin + '/games/' + store.game.id,
+    method: 'PATCH',
+    headers: {
+      Authorization: 'Token token=' + store.user1.token
+    },
+    data
+  })
+}
+
+const getPlayerStats = function () {
   return $.ajax({
     url: config.apiOrigin + '/games',
     method: 'GET',
@@ -14,5 +35,7 @@ const onGetPlayerStats = function () {
 }
 
 module.exports = {
-  onGetPlayerStats
+  getPlayerStats,
+  newGame,
+  sendMove
 }
