@@ -41,7 +41,7 @@ const checkForWinner = function (optionalBoard) {
   if (turns === 9) {
     return ['Draw!', 'Draw', true]
   } else {
-    return [`Game in progress! It's ${turn}'s turn'`, turn, false]
+    return [`Game in progress! It's ${turn}'s turn`, turn, false]
   }
 }
 const makeMove = function (index, element) {

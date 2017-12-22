@@ -1,12 +1,11 @@
 'use strict'
 
-// const uimethods = require('../uimethods')
+const uimethods = require('../uimethods')
 
 const store = require('../store')
 const logic = require('./logic')
 
 const processStats = function (games) {
-  console.log(games)
   const finished = games.filter(game => game.over)
     .map(game => logic.checkForWinner(game.cells))
 
@@ -27,15 +26,16 @@ const setUpBoard = function (data) {
     $('.box' + i).text(token)
   })
   const message = logic.checkForWinner()[0]
-  $('#message').text(message)
+  uimethods.updateMessage(message)
 }
 
 const newGameSuccess = function (data) {
   setUpBoard(data)
+  uimethods.updateMessage('New game created.  Good luck!')
 }
 
 const newGameFailure = function () {
-  console.error('failed to create New Game')
+  uimethods.updateMessage('Failed to create New Game')
 }
 
 const getPlayersSuccess = function (data) {
@@ -47,14 +47,14 @@ const getPlayersSuccess = function (data) {
 }
 
 const getPlayersFailure = function () {
-  console.error('failed to get games')
+  uimethods.updateMessage('failed to get games')
 }
 
 const openPreviousGameSuccess = function (data) {
   setUpBoard(data)
 }
-const openPreviousGameFailure = function (error) {
-  console.error('Error retrieving game', error)
+const openPreviousGameFailure = function () {
+  uimethods.updateMessage('Unable to retrieve game')
 }
 
 module.exports = {

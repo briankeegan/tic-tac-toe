@@ -10,7 +10,6 @@ const signUpSuccess = function () {
 const signUpFailure = function (error) {
   if (error) {
     uimethods.updateMessage('Unable to sign up.  Please try a different email.')
-    console.error(error)
   } else {
     uimethods.updateMessage('Passwords don\'t match')
   }
@@ -23,9 +22,8 @@ const signInSuccess = function (data) {
   $('.inital-page').toggle()
 }
 
-const signInFailure = function (error) {
+const signInFailure = function () {
   uimethods.updateMessage('Invalid username or password')
-  console.error(error)
 }
 
 const changePasswordSuccess = function (data) {
@@ -35,7 +33,6 @@ const changePasswordSuccess = function (data) {
 const changePasswordFailure = function (error) {
   if (error) {
     uimethods.updateMessage('Error changing password')
-    console.error(error)
   } else {
     uimethods.updateMessage('Passwords don\'t match')
   }
