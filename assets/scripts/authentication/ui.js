@@ -43,6 +43,8 @@ const logoutSuccess = function () {
   uimethods.updateMessage('Successfully signed out!')
   store.user1 = null
   store.games = null
+  store.game = null
+  store.board = null
   $('.after-sign-in').css('display', 'none')
   $('.inital-page').toggle()
   $('.box').text('')
