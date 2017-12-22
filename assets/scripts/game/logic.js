@@ -1,4 +1,5 @@
 'use strict'
+
 const tokens = ['x', 'o']
 const api = require(`./api`)
 const store = require(`../store`)
@@ -12,11 +13,12 @@ const winningCombos = [
   [0, 4, 8],
   [2, 4, 6]
 ]
+
 const createBoard = function (input) {
   // Not yet useful but thinking ahead for offline mode..
   return Array.isArray(input) ? input : ['', '', '', '', '', '', '', '', '']
 }
-const board = createBoard()
+
 const checkForWinningMove = function (token, board, indexes) {
   return indexes.every(index => token === board[index])
 }
@@ -35,7 +37,6 @@ const checkForWinner = function () {
   }
   // If all moves have been made with no winner, its a draw
   if (turns === 9) {
-    // This is clunky. Come back and fix
     return ['Draw!', 'Draw', true]
   } else {
     return [`Game in progress! It's ${turn}'s turn'`, turn, false]
@@ -63,7 +64,6 @@ It's still ${status[1]}'s turn'`
             index: index,
             value: status[1]
           },
-          // Convoluted, must fix this whole section...
           over: checkForWinner()[2]
         }
       }
@@ -74,8 +74,7 @@ It's still ${status[1]}'s turn'`
 }
 
 module.exports = {
-  createBoard,
   checkForWinner,
   makeMove,
-  board
+  createBoard
 }
