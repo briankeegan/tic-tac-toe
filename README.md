@@ -1,5 +1,9 @@
 ##    Wire-frame
 [my wire-frame](https://projects.invisionapp.com/freehand/document/S5mSo0MdL)
+
+After reviewing the required specs I decided to update my wireframe.
+
+[my wire-frame updated](https://projects.invisionapp.com/freehand/document/TjHvDLQSg)
 ##    My story
 -    As a user I want to access the tic-tac-toe games.
 -    As a coder I want access to the files via github
