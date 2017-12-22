@@ -20,6 +20,7 @@ const signInSuccess = function (data) {
   uimethods.updateMessage('Succesfully signed in as ' + store.user1.email)
   $('.after-sign-in').css('display', 'block')
   $('.inital-page').toggle()
+  $('.navbar-brand').text(store.user1.email)
 }
 
 const signInFailure = function () {
@@ -45,6 +46,7 @@ const logoutSuccess = function () {
   $('.after-sign-in').css('display', 'none')
   $('.inital-page').toggle()
   $('.box').text('')
+  $('.navbar-brand').text('Tic-Tac-Toe')
 }
 
 const logoutFailure = function () {
