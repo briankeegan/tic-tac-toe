@@ -24,21 +24,33 @@
             <a class="navbar-brand" href="#">Tic Tac Toe</a>
           </div>
           <div class="collapse navbar-collapse" id="tttNavbar">
+            <form class="navbar-form navbar-left" id="sign-in">
+              <div class="input-group">
+                <input class="form-control" name="credentials[email]" type="text" placeholder="Email" />
+              </div>
+              <div class="input-group">
+                <input class="form-control" name="credentials[password]" type="password" placeholder="Password" />
+              </div>
+              <div class="input-group">
+                <div class="input-group-btn">
+                  <input type="submit" class="btn btn-primary" value="Sign in!" />
+                </div>
+              </div>
+              </form>
             <ul class="nav navbar-nav">
-              <li><a href="#" data-toggle="modal" data-target="#signInModal">Sign In</a></li>
               <li><a href="#" data-toggle="modal" data-target="#signUpModal">Sign Up</a></li>
-              <li><a href="#" data-toggle="modal" data-target="#changePasswordModal">Change Password</a></li>
+              <!-- <li><a href="#" data-toggle="modal" data-target="#changePasswordModal">Change Password</a></li>
               <li><a href="#" data-toggle="modal" data-target="#playerStatsModal" id="playerStatsButton">Player Stats</a></li>
               <li><a href="#" id="newGame">New Game</a></li>
-              <li><a href="#" data-toggle="modal" data-target="#openPreviousGameModal">Open Previous Game</a></li>
+              <li><a href="#" data-toggle="modal" data-target="#openPreviousGameModal">Open Previous Game</a></li> -->
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
               <li><a href="#" data-toggle="modal" data-target="#aboutModal">About </a></li>
             </ul>
-            <form id="logout">
+            <!-- <form id="logout">
               <input type="submit" class="btn btn-danger navbar-btn navbar-right" value="Logout"/>
-            </form>
+            </form> -->
           </div>
         </div>
       </nav>
@@ -69,7 +81,7 @@
         </div>
         <!-- Modals -->
         <!-- signInModal -->
-        <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModal" aria-hidden="true">
+        <!-- <div class="modal fade" id="signInModal" tabindex="-1" role="dialog" aria-labelledby="signInModal" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -90,7 +102,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
         <!-- signUpModal -->
         <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModal" aria-hidden="true">
           <div class="modal-dialog" role="document">
