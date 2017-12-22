@@ -1,5 +1,4 @@
 'use strict'
-const store = require('../store')
 const tokens = ['x', 'o']
 const api = require(`./api`)
 const winningCombos = [
@@ -52,7 +51,7 @@ It's still ${status[1]}'s turn'`
     } else {
       board[index] = status[1]
       element.innerHTML = status[1]
-      store.sendMove = {
+      const move = {
         game: {
           cell: {
             index: index,
@@ -62,7 +61,7 @@ It's still ${status[1]}'s turn'`
           over: checkForWinner()[2]
         }
       }
-      // api.sendMove(store.sendMove)
+      // api.sendMove(move)
       return checkForWinner()[0]
     }
   }

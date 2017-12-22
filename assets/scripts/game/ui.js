@@ -24,6 +24,7 @@ const newGameFailure = function () {
 
 const getPlayersSuccess = function (data) {
   const stats = processStats(data)
+  console.log(data)
   Object.keys(stats).forEach(key => {
     $(`#${key}`).text(' ' + stats[key])
   })
