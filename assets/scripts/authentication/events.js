@@ -9,9 +9,14 @@ const onSignUp = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
   this.reset()
-  api.signUp(data)
-    .then(ui.signUpSuccess)
-    .catch(ui.signUpFailure)
+  $('#signUpModal').modal('toggle')
+  if (data.credentials.password === data.credentials.password_confirmation) {
+    api.signUp(data)
+      .then(ui.signUpSuccess)
+      .catch(ui.signUpFailure)
+  } else {
+    ui.signUpFailure()
+  }
 }
 
 const onSignIn = function (event) {
@@ -27,6 +32,7 @@ const onChangePassword = function (event) {
   const data = getFormFields(this)
   event.preventDefault()
   this.reset()
+  $('#changePasswordModal').modal('toggle')
   if (data.passwords.new === data.passwords['new-retyped']) {
     api.changePassword(data)
       .then(ui.changePasswordSuccess)

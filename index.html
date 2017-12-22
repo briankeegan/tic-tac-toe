@@ -24,12 +24,12 @@
             <a class="navbar-brand" href="#">Tic Tac Toe</a>
           </div>
           <div class="collapse navbar-collapse" id="tttNavbar">
-            <form class="navbar-form navbar-left" id="sign-in">
+            <form class="navbar-form navbar-left inital-page" id="sign-in">
               <div class="input-group">
-                <input class="form-control" name="credentials[email]" type="text" placeholder="Email" autofocus required/>
+                <input class="form-control" name="credentials[email]" type="text" placeholder="Email" autofocus required />
               </div>
               <div class="input-group">
-                <input class="form-control" name="credentials[password]" type="password" placeholder="Password" required/>
+                <input class="form-control" name="credentials[password]" type="password" placeholder="Password" required />
               </div>
               <div class="input-group">
                 <div class="input-group-btn">
@@ -38,19 +38,19 @@
               </div>
               </form>
             <ul class="nav navbar-nav">
-              <li><a href="#" data-toggle="modal" data-target="#signUpModal">Sign Up</a></li>
-              <!-- <li><a href="#" data-toggle="modal" data-target="#changePasswordModal">Change Password</a></li>
-              <li><a href="#" data-toggle="modal" data-target="#playerStatsModal" id="playerStatsButton">Player Stats</a></li>
-              <li><a href="#" id="newGame">New Game</a></li>
-              <li><a href="#" data-toggle="modal" data-target="#openPreviousGameModal">Open Previous Game</a></li> -->
+              <li><a href="#" class="inital-page" data-toggle="modal" data-target="#signUpModal" >Sign Up</a></li>
+              <li><a href="#" class="after-sign-in" data-toggle="modal" data-target="#changePasswordModal">Change Password</a></li>
+              <li><a href="#" class="after-sign-in" data-toggle="modal" data-target="#playerStatsModal" id="playerStatsButton">Player Stats</a></li>
+              <li><a href="#" class="after-sign-in" id="newGame">New Game</a></li>
+              <li><a href="#" class="after-sign-in" data-toggle="modal" data-target="#openPreviousGameModal">Open Previous Game</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
               <li><a href="#" data-toggle="modal" data-target="#aboutModal">About </a></li>
             </ul>
-            <!-- <form id="logout">
+            <form id="logout" class="after-sign-in" >
               <input type="submit" class="btn btn-danger navbar-btn navbar-right" value="Logout"/>
-            </form> -->
+            </form>
           </div>
         </div>
       </nav>
@@ -92,9 +92,9 @@
               </div>
               <div class="modal-body">
                 <form id="sign-up">
-                  <input name="credentials[email]" type="text" placeholder="Email" required/>
-                  <input name="credentials[password]" type="password" placeholder="Password" required/>
-                  <input name="credentials[password_confirmation]" type="password" placeholder="Retype Password" required/>
+                  <input name="credentials[email]" type="text" placeholder="Email" required />
+                  <input name="credentials[password]" type="password" placeholder="Password" required />
+                  <input name="credentials[password_confirmation]" type="password" placeholder="Retype Password" required />
                   <input type="submit" class="btn btn-primary" value="Submit!" />
                 </form>
               </div>

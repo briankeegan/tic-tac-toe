@@ -8,13 +8,16 @@ const signUpSuccess = function () {
 }
 
 const signUpFailure = function (error) {
-  uimethods.updateMessage('Unable to sign up.  Please try a different email')
-  console.error(error)
+  if (error) {
+    uimethods.updateMessage('Unable to sign up.  Please try a different email.')
+    console.error(error)
+  } else {
+    uimethods.updateMessage('Passwords don\'t match')
+  }
 }
 
 const signInSuccess = function (data) {
   store.user1 = data.user
-  console.log(this)
   uimethods.updateMessage('Succesfully signed in as ' + store.user1.email)
 }
 

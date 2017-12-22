@@ -1,0 +1,11 @@
+$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+
+$n: none;
+
+.navbar-nav > li > .after-sign-in {
+  display: $n;
+}
+
+.navbar-collapse > .after-sign-in {
+  display: $n;
+}
