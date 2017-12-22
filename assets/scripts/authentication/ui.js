@@ -19,6 +19,8 @@ const signUpFailure = function (error) {
 const signInSuccess = function (data) {
   store.user1 = data.user
   uimethods.updateMessage('Succesfully signed in as ' + store.user1.email)
+  $('.after-sign-in').css('display', 'block')
+  $('.inital-page').toggle()
 }
 
 const signInFailure = function (error) {
@@ -27,7 +29,7 @@ const signInFailure = function (error) {
 }
 
 const changePasswordSuccess = function (data) {
-  uimethods.updateMessage('successfully changed password!')
+  uimethods.updateMessage('Successfully changed password!')
 }
 
 const changePasswordFailure = function (error) {
