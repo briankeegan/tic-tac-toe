@@ -3,14 +3,18 @@
 const store = require('../store')
 const logic = require('./logic')
 
-const processStats = function (data) {
+const processStats = function (games) {
+  console.log(games)
+  const finished = games.filter(game => game.over)
+    .map(game => logic.checkForWinner(game.cells))
+
   return {
-    played: data.games.length || 0,
+    played: games.length || 0,
     // don't forget to finish this later!
-    won: null || 0,
-    lost: null || 0,
-    tied: null || 0,
-    unfinished: null || 0
+    won: finished.filter(game => game[0] === 'You won!').length || 0,
+    lost: finished.filter(game => game[0] === 'You lost!').length || 0,
+    tied: finished.filter(game => game[0] === 'Draw!').length || 0,
+    unfinished: games.filter(game => !game.over).length || 0
   }
 }
 
@@ -33,8 +37,8 @@ const newGameFailure = function () {
 }
 
 const getPlayersSuccess = function (data) {
-  const stats = processStats(data)
-  console.log(data)
+  store.games = data.games
+  const stats = processStats(store.games)
   Object.keys(stats).forEach(key => {
     $(`#${key}`).text(' ' + stats[key])
   })

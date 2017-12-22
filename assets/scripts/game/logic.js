@@ -23,8 +23,8 @@ const checkForWinningMove = function (token, board, indexes) {
   return indexes.every(index => token === board[index])
 }
 
-const checkForWinner = function () {
-  const board = store.board
+const checkForWinner = function (optionalBoard) {
+  const board = optionalBoard || store.board
   const turns = board.filter(move => move !== '').length
   const turn = turns % 2 === 0 ? tokens[0] : tokens[1]
   for (let i = 0; i < winningCombos.length; i++) {
@@ -32,7 +32,7 @@ const checkForWinner = function () {
       return ['You won!', winningCombos[i], true]
     }
     if (checkForWinningMove(tokens[1], board, winningCombos[i])) {
-      return ['You Lost!', winningCombos[i], true]
+      return ['You lost!', winningCombos[i], true]
     }
   }
   // If all moves have been made with no winner, its a draw
