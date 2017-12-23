@@ -21,6 +21,14 @@ $collapse-issue: 787px;
     @include box($xlg / 2)
   }
 
+  .prev-ttt-container > .row > .box {
+    @include box($xlg / 4)
+  }
+
+  .prev-ttt-container {
+    @include ttt-container($xlg / 4)
+  }
+
   .ttt-container {
     @include ttt-container($xlg / 2)
   }
@@ -31,6 +39,14 @@ $collapse-issue: 787px;
     @include box($lg / 2)
   }
 
+  .prev-ttt-container > .row > .box {
+    @include box($lg / 4)
+  }
+
+  .prev-ttt-container {
+    @include ttt-container($lg / 4)
+  }
+
   .ttt-container {
     @include ttt-container($lg / 2)
   }
@@ -39,6 +55,14 @@ $collapse-issue: 787px;
 @media all and (max-width: $md) {
   .box {
     @include box($md / 2)
+  }
+
+  .prev-ttt-container > .row > .box {
+    @include box($md / 4)
+  }
+
+  .prev-ttt-container {
+    @include ttt-container($md / 4)
   }
 
   .ttt-container {
@@ -53,6 +77,14 @@ $collapse-issue: 787px;
 @media all and (max-width: $sm) {
   .box {
     @include box($sm / 2)
+  }
+
+  .prev-ttt-container > .row > .box {
+    @include box($sm / 4)
+  }
+
+  .prev-ttt-container {
+    @include ttt-container($sm / 4)
   }
 
   .ttt-container {

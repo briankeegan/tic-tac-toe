@@ -9,6 +9,10 @@
   text-align: center;
 }
 
+.prev-ttt-container > .row > .box {
+  font-size: $prev-game-width / 4;
+}
+
 .box0 {
   $params: (0 1px 1px 0);
   @include tic-border($params...)
