@@ -42,11 +42,11 @@
               <li><a href="#" class="after-sign-in" data-toggle="modal" data-target="#changePasswordModal">Change Password</a></li>
               <li><a href="#" class="after-sign-in" data-toggle="modal" data-target="#playerStatsModal" id="playerStatsButton">Player Stats</a></li>
               <li><a href="#" class="after-sign-in" id="newGame">New Game</a></li>
-              <li><a href="#" class="after-sign-in" data-toggle="modal" data-target="#openPreviousGameModal">Open Previous Game</a></li>
+              <li><a href="#" class="after-sign-in" data-toggle="modal" data-target="#openPreviousGameModal" id="openPreviousGameButton">Open Previous Game</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
-              <li><a href="#" data-toggle="modal" data-target="#aboutModal">About </a></li>
+              <li><a href="#" data-toggle="modal" data-target="#aboutModal">About</a></li>
             </ul>
             <form id="logout" class="after-sign-in" >
               <input type="submit" class="btn btn-danger navbar-btn navbar-right" value="Logout"/>
@@ -139,13 +139,11 @@
                     </button>
               </div>
               <div class="modal-body">
-                <form id="player-stats">
                   <p>Games played:<span id="played"></span></p>
                   <p>Games won:<span id="won"></span></p>
                   <p>Games lost:<span id="lost"></span></p>
                   <p>Games tied:<span id="tied"></span></p>
                   <p>Unfinished Games:<span id="unfinished"></span></p>
-                </form>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -164,9 +162,7 @@
                     </button>
               </div>
               <div class="modal-body">
-                <form id="about">
-                  Add "About" content here
-                </form>
+                  Add "About" content here:
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -185,10 +181,7 @@
                     </button>
               </div>
               <div class="modal-body">
-                <form id="openPreviousGame">
-                  <input name="game[id]" type="number" placeholder="Game ID#" required />
-                  <input type="submit" class="btn btn-primary" value="Submit!" />
-                </form>
+                <span id="gameinfo"></span>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

@@ -21,8 +21,16 @@ const onMakeMove = function () {
 
 const onGetPlayerStats = function () {
   api.getPlayerStats()
-    .then(ui.getPlayersSuccess)
-    .catch(ui.getPlayersFailure)
+    .then(ui.getPlayerStatsSuccess)
+    .catch(ui.getPlayerStatsFailure)
+}
+// will use soon...!
+const onOpenPreviousGame = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  api.openPreviousGame(data.game.id)
+    .then(ui.openPreviousGameSuccess)
+    .catch(ui.openPreviousGameFailure)
 }
 
 const addHandler = function () {
@@ -30,15 +38,8 @@ const addHandler = function () {
   // SHOULD only allow clickable when  signed in, and new game
   $('.box').on('click', onMakeMove)
   $('#playerStatsButton').on('click', onGetPlayerStats)
+  $('#openPreviousGameButton').on('click', onGetPlayerStats)
   $('#openPreviousGame').on('submit', onOpenPreviousGame)
-}
-
-const onOpenPreviousGame = function (event) {
-  event.preventDefault()
-  const data = getFormFields(this)
-  api.openPreviousGame(data.game.id)
-    .then(ui.openPreviousGameSuccess)
-    .catch(ui.openPreviousGameFailure)
 }
 
 module.exports = {

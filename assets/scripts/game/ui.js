@@ -38,7 +38,7 @@ const newGameFailure = function () {
   uimethods.updateMessage('Failed to create New Game')
 }
 
-const getPlayersSuccess = function (data) {
+const getPlayerStatsSuccess = function (data) {
   store.games = data.games
   const stats = processStats(store.games)
   Object.keys(stats).forEach(key => {
@@ -46,7 +46,7 @@ const getPlayersSuccess = function (data) {
   })
 }
 
-const getPlayersFailure = function () {
+const getPlayerStatsFailure = function () {
   uimethods.updateMessage('failed to get games')
 }
 
@@ -60,8 +60,8 @@ const openPreviousGameFailure = function () {
 module.exports = {
   newGameSuccess,
   newGameFailure,
-  getPlayersSuccess,
-  getPlayersFailure,
+  getPlayerStatsSuccess,
+  getPlayerStatsFailure,
   openPreviousGameSuccess,
   openPreviousGameFailure
 }
