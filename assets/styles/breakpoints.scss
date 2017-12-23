@@ -1,0 +1,31 @@
+$xlg: 1199px;
+$lg: 991px;
+$md: 768px;
+$sm: 480px;
+
+@mixin box($size) {
+  font-size: $size / 4;
+  height: $size / 3;
+}
+
+@mixin ttt-container($size) {
+  width: $size;
+}
+
+
+@media all and (max-width: $xlg) {
+
+}
+
+@media all and (max-width: $lg) {
+}
+
+@media all and (max-width: $md) {
+  .ttt-container {
+    @include ttt-container(40px)
+  }
+}
+
+@media all and (max-width: $sm) {
+
+}
