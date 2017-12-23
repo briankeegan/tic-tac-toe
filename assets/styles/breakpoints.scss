@@ -3,6 +3,8 @@ $lg: 991px;
 $md: 768px;
 $sm: 480px;
 
+$collapse-issue: 787px;
+
 @mixin box($size) {
   font-size: $size / 4;
   height: $size / 3;
@@ -10,22 +12,54 @@ $sm: 480px;
 
 @mixin ttt-container($size) {
   width: $size;
+  // padding: 0 0 $size 0;
 }
 
 
 @media all and (max-width: $xlg) {
+  .box {
+    @include box($xlg / 2)
+  }
 
+  .ttt-container {
+    @include ttt-container($xlg / 2)
+  }
 }
 
 @media all and (max-width: $lg) {
+  .box {
+    @include box($lg / 2)
+  }
+
+  .ttt-container {
+    @include ttt-container($lg / 2)
+  }
 }
 
 @media all and (max-width: $md) {
+  .box {
+    @include box($md / 2)
+  }
+
   .ttt-container {
-    @include ttt-container(40px)
+    @include ttt-container($md / 2)
   }
 }
 
 @media all and (max-width: $sm) {
+  .box {
+    @include box($sm / 2)
+  }
 
+  .ttt-container {
+    @include ttt-container($sm / 2)
+  }
+}
+
+// Fix collapse issue at 787px
+
+@media all and (max-width: $collapse-issue) {
+  .navbar-form {
+    padding: 0;
+  }
 }

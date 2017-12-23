@@ -12,9 +12,16 @@ body {
 footer {
   background-color: $color5;
   color: darken($color4, 20%);
-  & a, & a:visited, & a:active {
+
+  & a {
     color: $color2;
-    &:hover{
+
+    :visited,
+    :active {
+      color: $color2;
+    }
+
+    &:hover {
       color: darken($color3, 25%);
     }
   }
