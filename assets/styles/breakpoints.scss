@@ -44,6 +44,10 @@ $collapse-issue: 787px;
   .ttt-container {
     @include ttt-container($md / 2)
   }
+
+  .message {
+    min-height: $norm-height * 2;
+  }
 }
 
 @media all and (max-width: $sm) {
@@ -53,6 +57,10 @@ $collapse-issue: 787px;
 
   .ttt-container {
     @include ttt-container($sm / 2)
+  }
+
+  .message {
+    min-height: $norm-height * 3;
   }
 }
 
