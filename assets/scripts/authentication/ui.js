@@ -19,7 +19,7 @@ const signInSuccess = function (data) {
   store.user1 = data.user
   uimethods.updateMessage('Succesfully signed in as ' + store.user1.email)
   $('.after-sign-in').css('display', 'block')
-  $('.inital-page').toggle()
+  $('.inital-page').css('display', 'none')
   $('.navbar-brand').text(store.user1.email)
 }
 
@@ -46,7 +46,7 @@ const logoutSuccess = function () {
   store.game = null
   store.board = null
   $('.after-sign-in').css('display', 'none')
-  $('.inital-page').toggle()
+  $('.inital-page').css('display', 'block')
   $('.box').text('')
   $('.navbar-brand').text('Tic-Tac-Toe')
 }
