@@ -19,6 +19,22 @@ const processStats = function (games) {
   }
 }
 
+const processGames = function (games) {
+  games.forEach((game, i) => {
+    const tttContainer = document.querySelector('.ttt-container')
+    const tttGame = tttContainer.cloneNode(true)
+    tttGame.classList.replace('ttt-container', 'prev-ttt-container')
+    tttGame.classList.add('ttt' + i)
+    $('#gameinfo').append(tttGame)
+    $('#gameinfo').append('<hr>')
+    console.log(game.cells)
+    game.cells.forEach((token, j) => {
+      console.log(token, i)
+      $('.ttt' + i + ' .box' + j).text(token)
+    })
+  })
+}
+
 const setUpBoard = function (data) {
   store.game = data.game
   store.board = logic.createBoard(store.game.cells)
@@ -46,6 +62,11 @@ const getPlayerStatsSuccess = function (data) {
   })
 }
 
+const getPlayerGamesSuccess = function (data) {
+  store.games = data.games
+  processGames(store.games)
+}
+
 const getPlayerStatsFailure = function () {
   uimethods.updateMessage('failed to get games')
 }
@@ -63,5 +84,6 @@ module.exports = {
   getPlayerStatsSuccess,
   getPlayerStatsFailure,
   openPreviousGameSuccess,
+  getPlayerGamesSuccess,
   openPreviousGameFailure
 }
