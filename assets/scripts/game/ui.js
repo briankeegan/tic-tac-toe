@@ -84,7 +84,6 @@ const getPlayerStatsSuccess = function (data) {
   Object.keys(stats).forEach(key => {
     $(`#${key}`).text(' ' + stats[key])
   })
-
 }
 
 const getPlayerGamesSuccess = function (data) {
@@ -104,6 +103,11 @@ const openPreviousGameFailure = function () {
   uimethods.updateMessage('Unable to retrieve game')
 }
 
+const startOnlinGameSuccess = function (data) {
+  document.getElementById('secretInput').value = store.game.id
+  uimethods.updateMessage('Waiting for player to join...')
+}
+
 module.exports = {
   newGameSuccess,
   newGameFailure,
@@ -111,5 +115,6 @@ module.exports = {
   getPlayerStatsFailure,
   openPreviousGameSuccess,
   getPlayerGamesSuccess,
-  openPreviousGameFailure
+  openPreviousGameFailure,
+  startOnlinGameSuccess
 }

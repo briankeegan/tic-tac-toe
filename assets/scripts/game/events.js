@@ -4,6 +4,7 @@
 const api = require(`./api`)
 const ui = require(`./ui`)
 // const store = require('../store')
+const uimethods = require('../uimethods')
 
 const logic = require('./logic')
 
@@ -49,6 +50,13 @@ const onOpenPreviousGameModalClose = function () {
   $('#gameinfo').empty()
 }
 
+const onStartOnlineGame = function () {
+  api.newGame()
+    .then(ui.newGameSuccess)
+    .then(ui.startOnlinGameSuccess)
+    .catch(ui.newGameFailure)
+}
+
 const addHandler = function () {
   $('#newGame').on('click', onNewGame)
   $('.box').on('click', onMakeMove)
@@ -56,6 +64,8 @@ const addHandler = function () {
   $('#openPreviousGameButton').on('click', onGetPlayerGames)
   // when modal is closed, reset content
   $('#openPreviousGameModal').on('hidden.bs.modal', onOpenPreviousGameModalClose)
+  $('#startOnlineGameButton').on('click', onStartOnlineGame)
+  $('#startOnlinGameId').on('click', uimethods.copyToClipBoard)
 }
 
 module.exports = {
