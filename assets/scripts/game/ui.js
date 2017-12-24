@@ -43,7 +43,7 @@ const processGames = function (games) {
     container.classList.add('message')
     const message = document.createElement('h2')
     container.appendChild(message)
-    const text = document.createTextNode(logic.checkForWinner(game.cells)[0])
+    const text = document.createTextNode('Open previous game?' + logic.checkForWinner(game.cells)[0].slice(17))
     message.appendChild(text)
     tttGame.insertBefore(container, tttGame.firstChild)
     // if the game is not finished, add data-id and class unfinished
