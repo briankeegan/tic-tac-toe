@@ -28,6 +28,7 @@ const signInFailure = function () {
 }
 
 const changePasswordSuccess = function (data) {
+  $('.navbar-collapse').collapse('hide')
   uimethods.updateMessage('Successfully changed password!')
 }
 
@@ -40,6 +41,7 @@ const changePasswordFailure = function (error) {
 }
 
 const logoutSuccess = function () {
+  $('.navbar-collapse').collapse('hide')
   uimethods.updateMessage('Successfully signed out!')
   store.user1 = null
   store.games = null

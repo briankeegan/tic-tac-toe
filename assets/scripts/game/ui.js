@@ -63,6 +63,7 @@ const setUpBoard = function (data) {
 }
 
 const newGameSuccess = function (data) {
+  $('.navbar-collapse').collapse('hide')
   setUpBoard(data)
   uimethods.updateMessage('New game created.  Good luck!')
 }
@@ -89,6 +90,7 @@ const getPlayerStatsFailure = function () {
 }
 
 const openPreviousGameSuccess = function (data) {
+  $('.navbar-collapse').collapse('hide')
   setUpBoard(data)
 }
 const openPreviousGameFailure = function () {

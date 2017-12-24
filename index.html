@@ -16,14 +16,15 @@
       <nav class="navbar navbar-inverse">
         <div class="container-fluid">
           <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#tttNavbar">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+              <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="#">Tic-Tac-Toe</a>
           </div>
-          <div class="collapse navbar-collapse" id="tttNavbar">
+          <div class="collapse navbar-collapse">
             <form class="navbar-form navbar-left inital-page" id="sign-in">
               <div class="input-group">
                 <input class="form-control" name="credentials[email]" type="text" placeholder="Email" autofocus required />
@@ -37,9 +38,9 @@
                 </div>
               </div>
               </form>
-            <ul class="nav navbar-nav">
+            <ul class="nav navbar-nav" >
               <li><a href="#" class="inital-page" data-toggle="modal" data-target="#signUpModal" >Sign Up</a></li>
-              <li><a href="#" class="after-sign-in" data-toggle="modal" data-target="#changePasswordModal">Change Password</a></li>
+              <li><a href="#" class="after-sign-in" data-toggle="modal" data-target="#changePasswordModal" >Change Password</a></li>
               <li><a href="#" class="after-sign-in" data-toggle="modal" data-target="#playerStatsModal" id="playerStatsButton">Player Stats</a></li>
               <li><a href="#" class="after-sign-in" id="newGame">New Game</a></li>
               <li><a href="#" class="after-sign-in" data-toggle="modal" data-target="#openPreviousGameModal" id="openPreviousGameButton">Open Previous Game</a></li>
