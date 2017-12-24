@@ -11,7 +11,6 @@ const processStats = function (games) {
 
   return {
     played: games.length || 0,
-    // don't forget to finish this later!
     won: finished.filter(game => game[0] === 'You won!').length || 0,
     lost: finished.filter(game => game[0] === 'You lost!').length || 0,
     tied: finished.filter(game => game[0] === 'Draw!').length || 0,
@@ -23,6 +22,8 @@ const processGames = function (games) {
   // Clear board
   $('#gameinfo').empty()
   games.forEach((game, i) => {
+    // if game is over or it is the current game being played skip game
+    if (game.over || (store.game && store.game.id === game.id)) return
     // copy the eleemnts from the orginal ttt board
     const tttContainer = document.querySelector('.ttt-container')
     const tttGame = tttContainer.cloneNode(true)

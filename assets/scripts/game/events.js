@@ -45,11 +45,17 @@ const onGetPlayerGames = function () {
     .catch(ui.getPlayerStatsFailure)
 }
 
+const onOpenPreviousGameModalClose = function () {
+  $('#gameinfo').empty()
+}
+
 const addHandler = function () {
   $('#newGame').on('click', onNewGame)
   $('.box').on('click', onMakeMove)
   $('#playerStatsButton').on('click', onGetPlayerStats)
   $('#openPreviousGameButton').on('click', onGetPlayerGames)
+  // when modal is closed, reset content
+  $('#openPreviousGameModal').on('hidden.bs.modal', onOpenPreviousGameModalClose)
 }
 
 module.exports = {
