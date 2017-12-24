@@ -20,7 +20,8 @@ const processStats = function (games) {
 
 const processGames = function (games) {
   // Clear board
-  $('#gameinfo').empty()
+  const gameInfo = $('#gameinfo')
+  gameInfo.empty()
   games.forEach((game, i) => {
     // if game is over or it is the current game being played skip game
     if (game.over || (store.game && store.game.id === game.id)) return
@@ -30,8 +31,8 @@ const processGames = function (games) {
     // change the class names  so they won't accidently get filled!
     tttGame.classList.replace('ttt-container', 'prev-ttt-container')
     tttGame.classList.add('ttt' + i)
-    $('#gameinfo').append(tttGame)
-    $('#gameinfo').append('<hr>')
+    gameInfo.append(tttGame)
+    gameInfo.append('<hr>')
     // fill the board
     game.cells.forEach((token, j) => {
       $('.ttt' + i + ' .box' + j).text(token)
@@ -51,6 +52,10 @@ const processGames = function (games) {
       tttGame.classList.add('unfinished')
     }
   })
+  // if gameInfo is empty, Inform user they havn't played any games!
+  if (!gameInfo.html()) {
+    gameInfo.html(`<h2>You have no unplayed games!</h2>`)
+  }
 }
 
 const setUpBoard = function (data) {
@@ -79,6 +84,7 @@ const getPlayerStatsSuccess = function (data) {
   Object.keys(stats).forEach(key => {
     $(`#${key}`).text(' ' + stats[key])
   })
+
 }
 
 const getPlayerGamesSuccess = function (data) {
