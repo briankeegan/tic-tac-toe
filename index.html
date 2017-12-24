@@ -44,7 +44,8 @@
               <li><a href="#" class="after-sign-in" data-toggle="modal" data-target="#playerStatsModal" id="playerStatsButton">Player Stats</a></li>
               <li><a href="#" class="after-sign-in" id="newGame">New Game</a></li>
               <li><a href="#" class="after-sign-in" data-toggle="modal" data-target="#openPreviousGameModal" id="openPreviousGameButton">Open Previous Game</a></li>
-              <li><a href="#" class="after-sign-in" data-toggle="modal" data-target="#startOnlineGame" id="startOnlineGameButton">Start Online Game</a></li>
+              <li><a href="#" class="after-sign-in" data-toggle="modal" data-target="#startOnlineGameModal" id="startOnlineGameButton">Start Online Game</a></li>
+              <li><a href="#" class="after-sign-in" data-toggle="modal" data-target="#joinOnlineGameModal" id="joinOnlineGameButton">Join Game</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
@@ -191,19 +192,44 @@
             </div>
           </div>
         </div>
-        <!-- startOnlineGame -->
-        <div class="modal fade" id="startOnlineGame" tabindex="-1" role="dialog" aria-labelledby="startOnlineGame" aria-hidden="true">
+        <!-- startOnlineGameModal -->
+        <div class="modal fade" id="startOnlineGameModal" tabindex="-1" role="dialog" aria-labelledby="startOnlineGameModal" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title">Start Online Game</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
               </div>
               <div class="modal-body">
                 <p>To start online game send unique number to a friend so they can join your game!</p>
-                <p>Game ID#: <input type="text" id="secretInput" value="something here" class="secret"/> <a href="#" id="startOnlinGameId">Copy #</a></p>
+                <p>Game ID#: <input type="number" id="secretInput" class="secret"/> <a href="#" id="startOnlinGameId">Copy #</a></p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- joinOnlineGameModal -->
+        <div class="modal fade" id="joinOnlineGameModal" tabindex="-1" role="dialog" aria-labelledby="joinOnlineGameModal" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Start Online Game</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+              </div>
+              <div class="modal-body">
+                <form id="joinOnlineGame">
+                  <p>To join online game enter unique game number you got from a friend!</p>
+                  <p>Game ID#:
+                    <input type="number" name="game[id]" id="joinId" placeholder="#" class="secret" required />
+                    <input type="submit" class="btn btn-primary" value="Join game!" />
+                  </p>
+                </form>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>

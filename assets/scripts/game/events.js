@@ -1,6 +1,6 @@
 'use strict'
 
-// const getFormFields = require(`../../../lib/get-form-fields`)
+const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require(`./api`)
 const ui = require(`./ui`)
 // const store = require('../store')
@@ -57,6 +57,15 @@ const onStartOnlineGame = function () {
     .catch(ui.newGameFailure)
 }
 
+const onJoinOnlineGame = function (event) {
+  event.preventDefault()
+  const data = getFormFields(this)
+  const id = data.game.id
+  api.joinOnlineGame(id)
+    .then(ui.joinOnlineGameSuccess)
+    .catch(ui.joinOnlineGameFailure)
+}
+
 const addHandler = function () {
   $('#newGame').on('click', onNewGame)
   $('.box').on('click', onMakeMove)
@@ -66,6 +75,7 @@ const addHandler = function () {
   $('#openPreviousGameModal').on('hidden.bs.modal', onOpenPreviousGameModalClose)
   $('#startOnlineGameButton').on('click', onStartOnlineGame)
   $('#startOnlinGameId').on('click', uimethods.copyToClipBoard)
+  $('#joinOnlineGame').on('submit', onJoinOnlineGame)
 }
 
 module.exports = {

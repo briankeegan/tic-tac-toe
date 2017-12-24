@@ -108,6 +108,13 @@ const startOnlinGameSuccess = function (data) {
   uimethods.updateMessage('Waiting for player to join...')
 }
 
+const joinOnlineGameSuccess = function (data) {
+  console.log(data)
+}
+
+const joinOnlineGameFailure = function (data) {
+  console.log('error from api', data)
+}
 module.exports = {
   newGameSuccess,
   newGameFailure,
@@ -116,5 +123,7 @@ module.exports = {
   openPreviousGameSuccess,
   getPlayerGamesSuccess,
   openPreviousGameFailure,
-  startOnlinGameSuccess
+  startOnlinGameSuccess,
+  joinOnlineGameSuccess,
+  joinOnlineGameFailure
 }
