@@ -20,18 +20,35 @@ const processStats = function (games) {
 }
 
 const processGames = function (games) {
+  // Clear board
+  $('#gameinfo').empty()
   games.forEach((game, i) => {
+    // copy the eleemnts from the orginal ttt board
     const tttContainer = document.querySelector('.ttt-container')
     const tttGame = tttContainer.cloneNode(true)
+    // change the class names  so they won't accidently get filled!
     tttGame.classList.replace('ttt-container', 'prev-ttt-container')
     tttGame.classList.add('ttt' + i)
     $('#gameinfo').append(tttGame)
     $('#gameinfo').append('<hr>')
-    console.log(game.cells)
+    // fill the board
     game.cells.forEach((token, j) => {
-      console.log(token, i)
       $('.ttt' + i + ' .box' + j).text(token)
     })
+    // add appropriate message
+    const container = document.createElement('div')
+    container.classList.add('container-fluid')
+    container.classList.add('message')
+    const message = document.createElement('h2')
+    container.appendChild(message)
+    const text = document.createTextNode(logic.checkForWinner(game.cells)[0])
+    message.appendChild(text)
+    tttGame.insertBefore(container, tttGame.firstChild)
+    // if the game is not finished, add data-id and class unfinished
+    if (!game.over) {
+      tttGame.dataset.id = game.id
+      tttGame.classList.add('unfinished')
+    }
   })
 }
 
