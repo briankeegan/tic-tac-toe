@@ -3,8 +3,8 @@
 const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require(`./api`)
 const ui = require(`./ui`)
-// const store = require('../store')
 const uimethods = require('../uimethods')
+const multiplayerEvents = require('../multiplayer/events')
 
 const logic = require('./logic')
 
@@ -54,6 +54,7 @@ const onStartOnlineGame = function () {
   api.newGame()
     .then(ui.newGameSuccess)
     .then(ui.startOnlinGameSuccess)
+    .then(multiplayerEvents.onCreateGameWatcher)
     .catch(ui.newGameFailure)
 }
 

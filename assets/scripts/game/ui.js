@@ -112,7 +112,7 @@ const joinOnlineGameSuccess = function (data) {
   $('.navbar-collapse').collapse('hide')
   setUpBoard(data)
 }
-// https://aqueous-atoll-85096.herokuapp.com/js/resource-watcher-0.1.0.js
+
 const joinOnlineGameFailure = function (data) {
   console.log('error from api', data)
 }
