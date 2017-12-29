@@ -21,7 +21,7 @@ const resourceWatcher = function (timeout) {
   url += '?token=' + token(conf)
   url += conf.timeout ? '&timeout=' + conf.timeout : ''
 
-  const es = new EventSource(url) // jshint ignore: line
+  const es = new EventSource(url)
   const close = function () {
     es.close()
   }

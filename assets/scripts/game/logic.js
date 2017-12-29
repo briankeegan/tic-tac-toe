@@ -79,8 +79,33 @@ It's still ${status[1]}'s turn'`
   }
 }
 
+const setUpBoard = function (data) {
+  store.game = data.game
+  store.board = createBoard(store.game.cells)
+  store.board.forEach((token, i) => {
+    $('.box' + i).text(token)
+  })
+  const message = checkForWinner()[0]
+  uimethods.updateMessage(message)
+}
+
+const processStats = function (games) {
+  const finished = games.filter(game => game.over)
+    .map(game => checkForWinner(game.cells))
+
+  return {
+    played: games.length || 0,
+    won: finished.filter(game => game[0] === 'You won!').length || 0,
+    lost: finished.filter(game => game[0] === 'You lost!').length || 0,
+    tied: finished.filter(game => game[0] === 'Draw!').length || 0,
+    unfinished: games.filter(game => !game.over).length || 0
+  }
+}
+
 module.exports = {
   checkForWinner,
   makeMove,
-  createBoard
+  createBoard,
+  setUpBoard,
+  processStats
 }

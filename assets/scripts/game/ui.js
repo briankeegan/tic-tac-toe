@@ -5,19 +5,6 @@ const uimethods = require('../uimethods')
 const store = require('../store')
 const logic = require('./logic')
 
-const processStats = function (games) {
-  const finished = games.filter(game => game.over)
-    .map(game => logic.checkForWinner(game.cells))
-
-  return {
-    played: games.length || 0,
-    won: finished.filter(game => game[0] === 'You won!').length || 0,
-    lost: finished.filter(game => game[0] === 'You lost!').length || 0,
-    tied: finished.filter(game => game[0] === 'Draw!').length || 0,
-    unfinished: games.filter(game => !game.over).length || 0
-  }
-}
-
 const processGames = function (games) {
   // Clear board
   const gameInfo = $('#gameinfo')
@@ -58,19 +45,9 @@ const processGames = function (games) {
   }
 }
 
-const setUpBoard = function (data) {
-  store.game = data.game
-  store.board = logic.createBoard(store.game.cells)
-  store.board.forEach((token, i) => {
-    $('.box' + i).text(token)
-  })
-  const message = logic.checkForWinner()[0]
-  uimethods.updateMessage(message)
-}
-
 const newGameSuccess = function (data) {
   $('.navbar-collapse').collapse('hide')
-  setUpBoard(data)
+  logic.setUpBoard(data)
   uimethods.updateMessage('New game created.  Good luck!')
 }
 
@@ -80,7 +57,7 @@ const newGameFailure = function () {
 
 const getPlayerStatsSuccess = function (data) {
   store.games = data.games
-  const stats = processStats(store.games)
+  const stats = logic.processStats(store.games)
   Object.keys(stats).forEach(key => {
     $(`#${key}`).text(' ' + stats[key])
   })
@@ -97,7 +74,7 @@ const getPlayerStatsFailure = function () {
 
 const openPreviousGameSuccess = function (data) {
   $('.navbar-collapse').collapse('hide')
-  setUpBoard(data)
+  logic.setUpBoard(data)
 }
 const openPreviousGameFailure = function () {
   uimethods.updateMessage('Unable to retrieve game')
@@ -110,12 +87,13 @@ const startOnlinGameSuccess = function (data) {
 
 const joinOnlineGameSuccess = function (data) {
   $('.navbar-collapse').collapse('hide')
-  setUpBoard(data)
+  logic.setUpBoard(data)
 }
 
 const joinOnlineGameFailure = function (data) {
   console.log('error from api', data)
 }
+
 module.exports = {
   newGameSuccess,
   newGameFailure,
