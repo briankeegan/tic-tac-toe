@@ -83,11 +83,14 @@ const openPreviousGameFailure = function () {
 const startOnlinGameSuccess = function (data) {
   document.getElementById('secretInput').value = store.game.id
   uimethods.updateMessage('Waiting for player to join...')
+  store.gameMode = 'online'
 }
 
 const joinOnlineGameSuccess = function (data) {
   $('.navbar-collapse').collapse('hide')
   logic.setUpBoard(data)
+  store.gameMode = 'online'
+  store.token = 'o'
 }
 
 const joinOnlineGameFailure = function (data) {

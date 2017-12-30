@@ -14,6 +14,7 @@ const newGame = function () {
 }
 
 const sendMove = function (data) {
+  console.log(store)
   return $.ajax({
     url: config.apiOrigin + '/games/' + store.game.id,
     method: 'PATCH',

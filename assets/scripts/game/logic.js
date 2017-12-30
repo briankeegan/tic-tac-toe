@@ -27,23 +27,37 @@ const checkForWinningMove = function (token, board, indexes) {
 
 const checkForWinner = function (optionalBoard) {
   const board = optionalBoard || store.board
+  const playersToken = store.token || 'x'
   const turns = board.filter(move => move !== '').length
   const turn = turns % 2 === 0 ? tokens[0] : tokens[1]
   for (let i = 0; i < winningCombos.length; i++) {
     if (checkForWinningMove(tokens[0], board, winningCombos[i])) {
-      return ['You won!', winningCombos[i], true]
+      if (playersToken === tokens[0]) {
+        return ['You won!', winningCombos[i], true]
+      } else {
+        return ['You lost!', winningCombos[i], true]
+      }
     }
     if (checkForWinningMove(tokens[1], board, winningCombos[i])) {
-      return ['You lost!', winningCombos[i], true]
+      if (playersToken === tokens[0]) {
+        return ['You lost!', winningCombos[i], true]
+      } else {
+        return ['You won!', winningCombos[i], true]
+      }
     }
   }
   // If all moves have been made with no winner, its a draw
   if (turns === 9) {
     return ['Draw!', 'Draw', true]
   } else {
-    return [`Game in progress! It's ${turn}'s turn`, turn, false]
+    if (playersToken === turn) {
+      return [`Game in progress! It's your turn`, turn, false]
+    } else {
+      return [`Game in progress! It's ${turn}'s turn`, turn, false]
+    }
   }
 }
+
 const makeMove = function (index, element) {
   const board = store.board
   if (!store.user1) {
@@ -79,10 +93,55 @@ It's still ${status[1]}'s turn'`
   }
 }
 
+const makeMoveOnline = function (index, element) {
+  const board = store.board
+  const token = store.token || 'x'
+  const status = checkForWinner()
+  // if the game is over (returns true)
+  if (status[2]) {
+    return status[0] + ' Game is over!'
+  } else {
+    if (token !== status[1]) {
+      return `Be patient, it's still ${status[1]}'s turn!'`
+    } else {
+      if (board[index] !== '') {
+        return `You can't go where a token has already been placed!`
+      } else {
+        board[index] = status[1]
+        element.innerHTML = status[1]
+        const move = {
+          game: {
+            cell: {
+              index: index,
+              value: status[1]
+            },
+            over: checkForWinner()[2]
+          }
+        }
+        api.sendMove(move)
+        return status[0]
+      }
+    }
+  }
+}
+
 const setUpBoard = function (data) {
   store.game = data.game
   store.board = createBoard(store.game.cells)
-  store.board.forEach((token, i) => {
+  store.board.forEach((token, i, arr) => {
+    $('.box' + i).text(token)
+  })
+  const message = checkForWinner()[0]
+  uimethods.updateMessage(message)
+}
+
+const setUpBoardOnline = function (data) {
+  Object.keys(data.game).forEach(cur => {
+    if (data.game[cur]) store.game[cur] = data.game[cur]
+  })
+  store.game.cells = store.game.cells[1]
+  store.board = createBoard(store.game.cells)
+  store.board.forEach((token, i, arr) => {
     $('.box' + i).text(token)
   })
   const message = checkForWinner()[0]
@@ -107,5 +166,7 @@ module.exports = {
   makeMove,
   createBoard,
   setUpBoard,
-  processStats
+  processStats,
+  makeMoveOnline,
+  setUpBoardOnline
 }

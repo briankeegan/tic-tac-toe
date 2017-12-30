@@ -3,18 +3,19 @@
 // const store = require('../store')
 // const config = require('../config')
 const api = require(`./api`)
+const logic = require('../game/logic')
 // const ui = require(`./ui`)
 
 const onChange = function (data) {
+  // if player o joins... get the new data!  Maybe in the future....
   if (data.game && data.game.player_o_id) {
     $('#message').text(`Player 'o' has joined the game!  It's your turn!`)
   } else if (data.game && data.game.cells) {
-    console.log(data.game.cells)
+    logic.setUpBoardOnline(data)
   }
 }
 
 const onCreateGameWatcher = function () {
-  // api.createOnlineGame()
   const gameWatcher = api.resourceWatcher(300000)
   gameWatcher.on('change', onChange)
 }

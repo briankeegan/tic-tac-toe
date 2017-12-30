@@ -5,6 +5,7 @@ const api = require(`./api`)
 const ui = require(`./ui`)
 const uimethods = require('../uimethods')
 const multiplayerEvents = require('../multiplayer/events')
+const store = require('../store')
 
 const logic = require('./logic')
 
@@ -16,7 +17,13 @@ const onNewGame = function () {
 
 const onMakeMove = function () {
   const index = this.dataset.index
-  const message = logic.makeMove(index, this)
+  let message
+  if (!store.gameMode) {
+    message = logic.makeMove(index, this)
+    $('#message').text(message)
+  } else if (store.gameMode === 'online') {
+    message = logic.makeMoveOnline(index, this)
+  }
   $('#message').text(message)
 }
 
@@ -64,6 +71,7 @@ const onJoinOnlineGame = function (event) {
   const id = data.game.id
   api.joinOnlineGame(id)
     .then(ui.joinOnlineGameSuccess)
+    .then(multiplayerEvents.onCreateGameWatcher)
     .catch(ui.joinOnlineGameFailure)
 }
 
