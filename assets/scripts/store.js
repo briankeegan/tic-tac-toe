@@ -5,8 +5,7 @@ const store = {
   games: null,
   game: null,
   board: null,
-  gameMode: null,
-  token: null
+  gameMode: null
 }
 
 module.exports = store

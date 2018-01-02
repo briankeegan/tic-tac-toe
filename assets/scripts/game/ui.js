@@ -88,9 +88,9 @@ const startOnlinGameSuccess = function (data) {
 
 const joinOnlineGameSuccess = function (data) {
   $('.navbar-collapse').collapse('hide')
-  logic.setUpBoard(data)
   store.gameMode = 'online'
-  store.token = 'o'
+  // store.token = 'o'
+  logic.setUpBoard(data)
 }
 
 const joinOnlineGameFailure = function (data) {

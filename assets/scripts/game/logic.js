@@ -25,9 +25,16 @@ const checkForWinningMove = function (token, board, indexes) {
   return indexes.every(index => token === board[index])
 }
 
-const checkForWinner = function (optionalBoard) {
-  const board = optionalBoard || store.board
-  const playersToken = store.token || 'x'
+const checkForWinner = function (game) {
+  const board = (game && game.cells) || store.board
+  console.log(game)
+  const playersToken = store.user1.id ===
+  (store.game &&
+    store.game.player_o &&
+    store.game.player_o.id) ||
+    (game &&
+    game.player_o)
+    ? 'o' : 'x'
   const turns = board.filter(move => move !== '').length
   const turn = turns % 2 === 0 ? tokens[0] : tokens[1]
   for (let i = 0; i < winningCombos.length; i++) {
@@ -95,7 +102,9 @@ It's still ${status[1]}'s turn'`
 
 const makeMoveOnline = function (index, element) {
   const board = store.board
-  const token = store.token || 'x'
+  // if the user id is the same as the o idea, token is 'o'.. else 'x'
+  const token = store.user1.id === (store.game.player_o &&
+    store.game.player_o.id) ? 'o' : 'x'
   const status = checkForWinner()
   // if the game is over (returns true)
   if (status[2]) {
@@ -150,7 +159,7 @@ const setUpBoardOnline = function (data) {
 
 const processStats = function (games) {
   const finished = games.filter(game => game.over)
-    .map(game => checkForWinner(game.cells))
+    .map(game => checkForWinner(game))
 
   return {
     played: games.length || 0,
