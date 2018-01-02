@@ -69,6 +69,8 @@ const onJoinOnlineGame = function (event) {
   event.preventDefault()
   const data = getFormFields(this)
   const id = data.game.id
+  this.reset()
+  $('#joinOnlineGameModal').modal('toggle')
   api.joinOnlineGame(id)
     .then(ui.joinOnlineGameSuccess)
     .then(multiplayerEvents.onCreateGameWatcher)

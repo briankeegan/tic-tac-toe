@@ -92,12 +92,12 @@ const startOnlinGameSuccess = function (data) {
 
 const joinOnlineGameSuccess = function (data) {
   $('.navbar-collapse').collapse('hide')
-  // store.gameMode = 'online'
   logic.setUpBoard(data)
+  $('#message').text(`Successfully joined game with ${data.game.player_x.email}`)
 }
 
 const joinOnlineGameFailure = function (data) {
-  console.error('error from api', data)
+  $('#message').text('Unable to join game.  Please check game ID#')
 }
 
 module.exports = {
