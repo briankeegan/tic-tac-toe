@@ -16,13 +16,13 @@ const onNewGame = function () {
 }
 
 const onMakeMove = function () {
+  if (store.isWaiting) return
   const index = this.dataset.index
   let message
-  if (!store.gameMode) {
-    message = logic.makeMove(index, this)
-    $('#message').text(message)
-  } else if (store.gameMode === 'online') {
+  if (store.game && (store.game.player_o || store.game.player_o_id)) {
     message = logic.makeMoveOnline(index, this)
+  } else {
+    message = logic.makeMove(index, this)
   }
   $('#message').text(message)
 }
@@ -41,7 +41,7 @@ const onOpenPreviousGame = function (event) {
     .catch(ui.openPreviousGameFailure)
 }
 
-const addUninishedHandler = () => {
+const addUnfinishedHandler = () => {
   $('.unfinished').on('click', onOpenPreviousGame)
 }
 
@@ -49,7 +49,7 @@ const onGetPlayerGames = function () {
   api.getPlayerStats()
     // only diff is ui on success updates openPreviousGame modal
     .then(ui.getPlayerGamesSuccess)
-    .then(addUninishedHandler)
+    .then(addUnfinishedHandler)
     .catch(ui.getPlayerStatsFailure)
 }
 

@@ -11,7 +11,11 @@ const processGames = function (games) {
   gameInfo.empty()
   games.forEach((game, i) => {
     // if game is over or it is the current game being played skip game
-    if (game.over || (store.game && store.game.id === game.id)) return
+    if (game.over ||
+      game.player_o ||
+      (store.game && store.game.id === game.id)) {
+      return
+    }
     // copy the eleemnts from the orginal ttt board
     const tttContainer = document.querySelector('.ttt-container')
     const tttGame = tttContainer.cloneNode(true)
@@ -30,7 +34,7 @@ const processGames = function (games) {
     container.classList.add('message')
     const message = document.createElement('h2')
     container.appendChild(message)
-    const text = document.createTextNode('Open previous game?' + logic.checkForWinner(game.cells)[0].slice(17))
+    const text = document.createTextNode('Open previous game?' + logic.checkForWinner(game)[0].slice(17))
     message.appendChild(text)
     tttGame.insertBefore(container, tttGame.firstChild)
     // if the game is not finished, add data-id and class unfinished
@@ -83,18 +87,17 @@ const openPreviousGameFailure = function () {
 const startOnlinGameSuccess = function (data) {
   document.getElementById('secretInput').value = store.game.id
   uimethods.updateMessage('Waiting for player to join...')
-  store.gameMode = 'online'
+  store.isWaiting = true
 }
 
 const joinOnlineGameSuccess = function (data) {
   $('.navbar-collapse').collapse('hide')
-  store.gameMode = 'online'
-  // store.token = 'o'
+  // store.gameMode = 'online'
   logic.setUpBoard(data)
 }
 
 const joinOnlineGameFailure = function (data) {
-  console.log('error from api', data)
+  console.error('error from api', data)
 }
 
 module.exports = {

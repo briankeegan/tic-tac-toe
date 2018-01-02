@@ -27,13 +27,13 @@ const checkForWinningMove = function (token, board, indexes) {
 
 const checkForWinner = function (game) {
   const board = (game && game.cells) || store.board
-  console.log(game)
-  const playersToken = store.user1.id ===
-  (store.game &&
+  const playersToken = (game &&
+    game.player_o) ||
+    (store.user1.id ===
+    (store.game &&
     store.game.player_o &&
-    store.game.player_o.id) ||
-    (game &&
-    game.player_o)
+    store.game.player_o.id) &&
+    !game)
     ? 'o' : 'x'
   const turns = board.filter(move => move !== '').length
   const turn = turns % 2 === 0 ? tokens[0] : tokens[1]
