@@ -57,7 +57,7 @@ const addHandler = function () {
   $('#sign-up').on('submit', onSignUp)
   $('#sign-in').on('submit', onSignIn)
   $('#change-password').on('submit', onChangePassword)
-  $('#logout').on('submit', onLogout)
+  $('#logout').on('click', onLogout)
 }
 
 module.exports = {

@@ -70,6 +70,7 @@ const onJoinOnlineGame = function (event) {
   const data = getFormFields(this)
   const id = data.game.id
   this.reset()
+  $('.navbar-collapse').collapse('hide')
   $('#joinOnlineGameModal').modal('toggle')
   api.joinOnlineGame(id)
     .then(ui.joinOnlineGameSuccess)

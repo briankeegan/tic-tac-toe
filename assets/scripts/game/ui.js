@@ -91,7 +91,6 @@ const startOnlinGameSuccess = function (data) {
 }
 
 const joinOnlineGameSuccess = function (data) {
-  $('.navbar-collapse').collapse('hide')
   logic.setUpBoard(data)
   $('#message').text(`Successfully joined game with ${data.game.player_x.email}`)
 }

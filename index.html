@@ -40,20 +40,34 @@
               </form>
             <ul class="nav navbar-nav" >
               <li><a href="#" class="inital-page" data-toggle="modal" data-target="#signUpModal" >Sign Up</a></li>
-              <li><a href="#" class="after-sign-in" data-toggle="modal" data-target="#changePasswordModal" >Change Password</a></li>
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle after-sign-in" data-toggle="dropdown">
+                  Play Game
+                  <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a href="#" id="newGame">Start Local Game</a></li>
+                  <li><a href="#" data-toggle="modal" data-target="#startOnlineGameModal" id="startOnlineGameButton">Start Online Game</a></li>
+                  <li><a href="#" data-toggle="modal" data-target="#openPreviousGameModal" id="openPreviousGameButton">Open Previous Game</a></li>
+                  <li><a href="#" data-toggle="modal" data-target="#joinOnlineGameModal" id="joinOnlineGameButton">Join Game</a></li>
+                </ul>
+              </li>
               <li><a href="#" class="after-sign-in" data-toggle="modal" data-target="#playerStatsModal" id="playerStatsButton">Player Stats</a></li>
-              <li><a href="#" class="after-sign-in" id="newGame">New Game</a></li>
-              <li><a href="#" class="after-sign-in" data-toggle="modal" data-target="#openPreviousGameModal" id="openPreviousGameButton">Open Previous Game</a></li>
-              <li><a href="#" class="after-sign-in" data-toggle="modal" data-target="#startOnlineGameModal" id="startOnlineGameButton">Start Online Game</a></li>
-              <li><a href="#" class="after-sign-in" data-toggle="modal" data-target="#joinOnlineGameModal" id="joinOnlineGameButton">Join Game</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right">
+              <li class="dropdown">
+                <button class="dropdown-toggle after-sign-in btn btn-danger navbar-btn" data-toggle="dropdown">
+                  Account
+                  <span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                  <li><a href="#" id="logout">Logout</a></li>
+                  <li><a href="#" class="after-sign-in" data-toggle="modal" data-target="#changePasswordModal" >Change Password</a></li>
+                </ul>
+              </li>
               <li><a href="#" data-toggle="modal" data-target="#aboutModal">About</a></li>
             </ul>
-            <form id="logout" class="after-sign-in" >
-              <input type="submit" class="btn btn-danger navbar-btn navbar-right" value="Logout"/>
-            </form>
           </div>
         </div>
       </nav>

@@ -10,6 +10,10 @@ $n: none;
   display: $n;
 }
 
+.navbar-right > .after-sign-in {
+  display: $n;
+}
+
 .secret {
   width: 60px;
 }
