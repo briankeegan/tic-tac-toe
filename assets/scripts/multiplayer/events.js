@@ -8,6 +8,7 @@ const logic = require('../game/logic')
 
 const onChange = function (data) {
   // if player o joins... get the new data!  Maybe in the future....
+  console.log(data)
   if (data.game && data.game.player_o_id) {
     Object.keys(data.game).forEach(cur => {
       if (data.game[cur]) store.game[cur] = data.game[cur]
@@ -19,9 +20,14 @@ const onChange = function (data) {
   }
 }
 
+const onError = function (e) {
+  console.error('Error in game watcher', e)
+}
+
 const onCreateGameWatcher = function () {
   const gameWatcher = api.resourceWatcher(300000)
   gameWatcher.on('change', onChange)
+  gameWatcher.on('error', onError)
 }
 
 module.exports = {
