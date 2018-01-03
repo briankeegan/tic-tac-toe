@@ -18,6 +18,9 @@ const onCreateGameWatcher = function () {
       $('#message').text(`Player 'o' has joined the game!  It's your turn!`)
     } else if (data.game && data.game.cells) {
       logic.setUpBoardOnline(data)
+    } else if (data && data.timeout) {
+      $('#message').text('Game timed out!')
+      gameWatcher.close()
     }
   })
   gameWatcher.on('error', function (e) {
