@@ -5,6 +5,7 @@ const api = require(`./api`)
 const ui = require(`./ui`)
 const uimethods = require('../uimethods')
 const multiplayerEvents = require('../multiplayer/events')
+const aiLogic = require('../ai/logic')
 const store = require('../store')
 
 const logic = require('./logic')
@@ -15,12 +16,25 @@ const onNewGame = function () {
     .catch(ui.newGameFailure)
 }
 
+const onNewGameAi = function () {
+  api.newGame()
+    .then(ui.newGameAiSuccess)
+    .catch(ui.newGameAiFailure)
+}
+
 const onMakeMove = function () {
   if (store.isWaiting) return
   const index = this.dataset.index
   let message
   if (store.game && (store.game.player_o || store.game.player_o_id)) {
     message = logic.makeMoveOnline(index, this)
+  } else if (store.ai) {
+    message = logic.makeMove(index, this)
+    // this is a hack
+    if (message === `Game in progress! It's o's turn`) {
+      const ai = aiLogic.aiMove()
+      message = logic.makeMove(ai[0], ai[1])
+    }
   } else {
     message = logic.makeMove(index, this)
   }
@@ -80,6 +94,7 @@ const onJoinOnlineGame = function (event) {
 
 const addHandler = function () {
   $('#newGame').on('click', onNewGame)
+  $('#newGameAi').on('click', onNewGameAi)
   $('.box').on('click', onMakeMove)
   $('#playerStatsButton').on('click', onGetPlayerStats)
   $('#openPreviousGameButton').on('click', onGetPlayerGames)

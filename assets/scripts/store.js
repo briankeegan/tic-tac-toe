@@ -5,7 +5,8 @@ const store = {
   games: null,
   game: null,
   board: null,
-  isWaiting: false
+  isWaiting: false,
+  ai: false
 }
 
 module.exports = store

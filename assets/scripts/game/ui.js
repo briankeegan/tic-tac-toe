@@ -53,10 +53,22 @@ const newGameSuccess = function (data) {
   $('.navbar-collapse').collapse('hide')
   logic.setUpBoard(data)
   uimethods.updateMessage('New game created.  Good luck!')
+  store.ai = false
 }
 
 const newGameFailure = function () {
   uimethods.updateMessage('Failed to create New Game')
+}
+
+const newGameAiSuccess = function (data) {
+  store.ai = true
+  $('.navbar-collapse').collapse('hide')
+  logic.setUpBoard(data)
+  uimethods.updateMessage('AI cannot be defeated... beep beep boop')
+}
+
+const newGameAiFailure = function () {
+  uimethods.updateMessage('Failed to create New Game With Friendly AI')
 }
 
 const getPlayerStatsSuccess = function (data) {
@@ -77,6 +89,7 @@ const getPlayerStatsFailure = function () {
 }
 
 const openPreviousGameSuccess = function (data) {
+  store.ai = false
   $('.navbar-collapse').collapse('hide')
   logic.setUpBoard(data)
 }
@@ -85,6 +98,7 @@ const openPreviousGameFailure = function () {
 }
 
 const startOnlinGameSuccess = function (data) {
+  store.ai = false
   document.getElementById('secretInput').value = store.game.id
   uimethods.updateMessage('Waiting for player to join...')
   store.isWaiting = true
@@ -102,6 +116,8 @@ const joinOnlineGameFailure = function (data) {
 module.exports = {
   newGameSuccess,
   newGameFailure,
+  newGameAiSuccess,
+  newGameAiFailure,
   getPlayerStatsSuccess,
   getPlayerStatsFailure,
   openPreviousGameSuccess,

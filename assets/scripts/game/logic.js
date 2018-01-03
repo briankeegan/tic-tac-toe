@@ -1,10 +1,10 @@
 'use strict'
 
 const uimethods = require('../uimethods')
-
 const tokens = ['x', 'o']
 const api = require(`./api`)
 const store = require(`../store`)
+
 const winningCombos = [
   [0, 1, 2],
   [3, 4, 5],
@@ -177,5 +177,7 @@ module.exports = {
   setUpBoard,
   processStats,
   makeMoveOnline,
-  setUpBoardOnline
+  setUpBoardOnline,
+  winningCombos,
+  checkForWinningMove
 }
