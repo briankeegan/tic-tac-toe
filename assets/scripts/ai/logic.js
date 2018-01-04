@@ -57,7 +57,6 @@ const aiGetMove = function (board) {
 
   const emptyEdge = findEmptySpot(board, edge)
   const emptyCorner = findEmptySpot(board, corner)
-
   // x--
   // -o-
   // -x-
@@ -79,21 +78,32 @@ const aiGetMove = function (board) {
       return getRandomMove(emptyEdge)
     }
   }
+  // x--
+  // -o-
+  // --x
+  if (emptyCorner.length === 2) {
+    if ((emptyCorner[0] === 0) && (emptyCorner[1] === 8)) {
+      return getRandomMove(emptyEdge)
+    }
+    if ((emptyCorner[0] === 2) && (emptyCorner[1] === 6)) {
+      return getRandomMove(emptyEdge)
+    }
+  }
   if (emptyEdge.length === 2) {
     // -x-
     // xo-
     // ---
     if ((emptyEdge[0] === 1) && (emptyEdge[1] === 3)) {
-      return 0
+      return 8
     }
     if ((emptyEdge[0] === 1) && (emptyEdge[1] === 5)) {
-      return 2
-    }
-    if ((emptyEdge[0] === 3) && (emptyEdge[1] === 7)) {
       return 6
     }
+    if ((emptyEdge[0] === 3) && (emptyEdge[1] === 7)) {
+      return 2
+    }
     if ((emptyEdge[0] === 5) && (emptyEdge[1] === 7)) {
-      return 8
+      return 0
     }
     // xox
     // ---
