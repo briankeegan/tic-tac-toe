@@ -1,10 +1,10 @@
 'use strict'
 
 const uimethods = require('../uimethods')
-const tokens = ['x', 'o']
-// const api = require(`./api`)
-const store = require(`../store`)
 
+const tokens = ['x', 'o']
+const api = require(`./api`)
+const store = require(`../store`)
 const winningCombos = [
   [0, 1, 2],
   [3, 4, 5],
@@ -68,10 +68,12 @@ const checkForWinner = function (game) {
 const makeMove = function (index, element) {
   const board = store.board
   if (!store.user1) {
-    return 'Log in to play the game!'
+    uimethods.updateMessage('Log in to play the game!')
+    return
   }
   if (!board) {
-    return 'Create new game, or load a previous one!'
+    uimethods.updateMessage('Create new game, or load a previous one!')
+    return
   }
   const status = checkForWinner()
   if (status[2]) {
@@ -112,7 +114,8 @@ const makeMoveOnline = function (index, element) {
         return `You can't go where a token has already been placed!`
       } else {
         board[index] = status[1]
-        return {
+        element.innerHTML = status[1]
+        const move = {
           game: {
             cell: {
               index: index,
@@ -121,6 +124,8 @@ const makeMoveOnline = function (index, element) {
             over: checkForWinner()[2]
           }
         }
+        api.sendMove(move)
+        return status[0]
       }
     }
   }
@@ -133,7 +138,7 @@ const setUpBoard = function (data) {
     $('.box' + i).text(token)
   })
   const message = checkForWinner()[0]
-  $('#message').text(message)
+  uimethods.updateMessage(message)
 }
 
 const setUpBoardOnline = function (data) {
@@ -150,14 +155,12 @@ const setUpBoardOnline = function (data) {
 }
 
 const processStats = function (games) {
-  // return array of all games, with their status
   const finished = games.filter(game => game.over)
     .map(game => checkForWinner(game))
   const unfinishedOnline = games.filter(game => !game.over && game.player_o)
-  console.log(unfinishedOnline)
-  console.log(games)
   return {
     played: games.length - unfinishedOnline.length || 0,
+    // played: games.length || 0,
     won: finished.filter(game => game[0] === 'You won!').length || 0,
     lost: finished.filter(game => game[0] === 'You lost!').length || 0,
     tied: finished.filter(game => game[0] === 'Draw!').length || 0,

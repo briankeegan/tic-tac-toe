@@ -21,9 +21,12 @@ const onNewGameAi = function () {
     .then(ui.newGameAiSuccess)
     .catch(ui.newGameAiFailure)
 }
+
 const onAiMakeMove = function () {
   const ai = aiLogic.aiMove()
   const move = logic.makeMove(ai[0], ai[1])
+  console.log('What?')
+  console.log(move)
   if (typeof move !== 'string') {
     api.sendMove(move)
       .then(ui.sendMoveSuccess)
@@ -36,8 +39,9 @@ const onMakeMove = function () {
   const move = logic.makeMove(index, this)
   // Playing online
   if (store.game && (store.game.player_o || store.game.player_o_id)) {
-
-    //this is the route I want to take, but can't test right now...
+    const message = logic.makeMoveOnline(index, this)
+    $('#message').text(message)
+    // this is the route I want to take, but I can't test right now...
 
     // const onlineMove = logic.makeMoveOnline(index, this)
     // if (typeof onlineMove !== 'string') {
@@ -47,6 +51,7 @@ const onMakeMove = function () {
     // } else {
     //   ui.sendMoveFailure(onlineMove)
     // }
+
     // Playing AI
   } else if (store.ai) {
     if (typeof move !== 'string') {
