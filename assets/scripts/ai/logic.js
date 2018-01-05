@@ -14,6 +14,10 @@ const findEmptySpot = function (board, moves = [0, 1, 2, 3, 4, 5, 6, 7, 8]) {
   return moves.filter(item => !board[item])
 }
 
+const findX = function (board, moves = [0, 1, 2, 3, 4, 5, 6, 7, 8]) {
+  return moves.filter(item => board[item] === 'x')
+}
+
 const winScenerio = function (board, optionalToken) {
   const token = optionalToken || 'o'
   // consider removing emptyspots
@@ -43,7 +47,7 @@ const aiGetMove = function (board) {
   const emptySpots = findEmptySpot(board)
   // First move is most important!
   if (emptySpots.length === 8) {
-    const move = board.indexOf('x')
+    const move = findX(board)[0]
     if (center.indexOf(move) > -1) {
       return getRandomMove(corner)
     } else {
@@ -60,22 +64,23 @@ const aiGetMove = function (board) {
   // x--
   // -o-
   // -x-
+  // 012
+  // 345
+  // 678
   if (emptyEdge.length === 3 && emptyCorner.length === 3) {
-    if ((emptyEdge[0] === 1) && (emptyEdge[1] === 3) && (emptyEdge[2] === 5)) {
-      emptyEdge.pop(emptyEdge.indexOf(7))
-      return getRandomMove(emptyEdge)
+    const e = findX(board, edge)[0]
+    const c = findX(board, corner)[0]
+    if (((e === 1) && (c === 6)) || ((e === 7) && (c === 0))) {
+      return 5
     }
-    if ((emptyEdge[0] === 1) && (emptyEdge[1] === 5) && (emptyEdge[2] === 7)) {
-      emptyEdge.pop(emptyEdge.indexOf(3))
-      return getRandomMove(emptyEdge)
+    if (((e === 1) && (c === 8)) || ((e === 7) && (c === 2))) {
+      return 3
     }
-    if ((emptyEdge[0] === 3) && (emptyEdge[1] === 5) && (emptyEdge[2] === 7)) {
-      emptyEdge.pop(emptyEdge.indexOf(1))
-      return getRandomMove(emptyEdge)
+    if (((e === 3) && (c === 2)) || ((e === 5) && (c === 0))) {
+      return 7
     }
-    if ((emptyEdge[0] === 1) && (emptyEdge[1] === 3) && (emptyEdge[2] === 7)) {
-      emptyEdge.pop(emptyEdge.indexOf(5))
-      return getRandomMove(emptyEdge)
+    if (((e === 3) && (c === 8)) || ((e === 5) && (c === 6))) {
+      return 1
     }
   }
   // x--
@@ -105,13 +110,12 @@ const aiGetMove = function (board) {
     if ((emptyEdge[0] === 5) && (emptyEdge[1] === 7)) {
       return 0
     }
-    // xox
     // ---
+    // xox
     // ---
     return getRandomMove(emptyCorner)
   }
-  console.log('random!')
-  return getRandomMove(findEmptySpot(board))
+  return emptyCorner.length ? getRandomMove(emptyCorner) : (findEmptySpot(board))
 }
 
 const aiMove = function () {
