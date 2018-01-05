@@ -124,6 +124,7 @@ const joinOnlineGameFailure = function (data) {
 }
 
 const sendMoveSuccess = function (data) {
+  console.log(data)
   setUpBoard(data)
 }
 

@@ -24,16 +24,30 @@ const onNewGameAi = function () {
 const onAiMakeMove = function () {
   const ai = aiLogic.aiMove()
   const move = logic.makeMove(ai[0], ai[1])
-  api.sendMove(move)
-    .then(ui.sendMoveSuccess)
-    .catch(ui.sendMoveFailure)
+  if (typeof move !== 'string') {
+    api.sendMove(move)
+      .then(ui.sendMoveSuccess)
+      .catch(ui.sendMoveFailure)
+  }
 }
 const onMakeMove = function () {
   if (store.isWaiting) return
   const index = this.dataset.index
   const move = logic.makeMove(index, this)
+  // Playing online
   if (store.game && (store.game.player_o || store.game.player_o_id)) {
-    // message = logic.makeMoveOnline(index, this)
+
+    //this is the route I want to take, but can't test right now...
+
+    // const onlineMove = logic.makeMoveOnline(index, this)
+    // if (typeof onlineMove !== 'string') {
+    //   api.sendMove(onlineMove)
+    //     .then(ui.sendMoveSuccess)
+    //     .catch(ui.sendMoveFailure)
+    // } else {
+    //   ui.sendMoveFailure(onlineMove)
+    // }
+    // Playing AI
   } else if (store.ai) {
     if (typeof move !== 'string') {
       api.sendMove(move)
@@ -43,6 +57,7 @@ const onMakeMove = function () {
     } else {
       ui.sendMoveFailure(move)
     }
+    // Playing locally
   } else {
     if (typeof move !== 'string') {
       api.sendMove(move)

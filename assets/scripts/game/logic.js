@@ -2,7 +2,7 @@
 
 const uimethods = require('../uimethods')
 const tokens = ['x', 'o']
-const api = require(`./api`)
+// const api = require(`./api`)
 const store = require(`../store`)
 
 const winningCombos = [
