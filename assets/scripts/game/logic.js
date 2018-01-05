@@ -1,10 +1,10 @@
 'use strict'
 
 const uimethods = require('../uimethods')
+
 const tokens = ['x', 'o']
 const api = require(`./api`)
 const store = require(`../store`)
-
 const winningCombos = [
   [0, 1, 2],
   [3, 4, 5],
@@ -84,8 +84,7 @@ const makeMove = function (index, element) {
 It's still ${status[1]}'s turn'`
     } else {
       board[index] = status[1]
-      element.innerHTML = status[1]
-      const move = {
+      return {
         game: {
           cell: {
             index: index,
@@ -94,8 +93,6 @@ It's still ${status[1]}'s turn'`
           over: checkForWinner()[2]
         }
       }
-      api.sendMove(move)
-      return checkForWinner()[0]
     }
   }
 }
@@ -160,13 +157,14 @@ const setUpBoardOnline = function (data) {
 const processStats = function (games) {
   const finished = games.filter(game => game.over)
     .map(game => checkForWinner(game))
-
+  const unfinishedOnline = games.filter(game => !game.over && game.player_o)
   return {
-    played: games.length || 0,
+    played: games.length - unfinishedOnline.length || 0,
+    // played: games.length || 0,
     won: finished.filter(game => game[0] === 'You won!').length || 0,
     lost: finished.filter(game => game[0] === 'You lost!').length || 0,
     tied: finished.filter(game => game[0] === 'Draw!').length || 0,
-    unfinished: games.filter(game => !game.over).length || 0
+    unfinished: games.filter(game => !game.over && !game.player_o).length || 0
   }
 }
 

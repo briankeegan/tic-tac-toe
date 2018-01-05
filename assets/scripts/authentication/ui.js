@@ -47,6 +47,8 @@ const logoutSuccess = function () {
   store.games = null
   store.game = null
   store.board = null
+  store.isWaiting = false
+  store.ai = false
   $('.after-sign-in').css('display', 'none')
   $('.inital-page').css('display', 'block')
   $('.box').text('')

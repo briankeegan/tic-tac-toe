@@ -1,13 +1,9 @@
 'use strict'
 const logic = require('../game/logic')
 const store = require(`../store`)
-// winningCombos,
-// checkForWinningMove
 
 const center = [4]
-
 const corner = [0, 2, 6, 8]
-
 const edge = [1, 3, 5, 7]
 
 const findEmptySpot = function (board, moves = [0, 1, 2, 3, 4, 5, 6, 7, 8]) {
@@ -19,6 +15,7 @@ const findX = function (board, moves = [0, 1, 2, 3, 4, 5, 6, 7, 8]) {
 }
 
 const winScenerio = function (board, optionalToken) {
+  console.log(logic.winningCombos, 'wining combos')
   const token = optionalToken || 'o'
   // consider removing emptyspots
   const emptySpots = findEmptySpot(board)
