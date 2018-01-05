@@ -68,13 +68,9 @@ const checkForWinner = function (game) {
 const makeMove = function (index, element) {
   const board = store.board
   if (!store.user1) {
-    // uimethods.updateMessage('Log in to play the game!')
-    // return
     return 'Log in to play the game!'
   }
   if (!board) {
-    // uimethods.updateMessage('Create new game, or load a previous one!')
-    // return
     return 'Create new game, or load a previous one!'
   }
   const status = checkForWinner()
@@ -116,8 +112,7 @@ const makeMoveOnline = function (index, element) {
         return `You can't go where a token has already been placed!`
       } else {
         board[index] = status[1]
-        element.innerHTML = status[1]
-        const move = {
+        return {
           game: {
             cell: {
               index: index,
@@ -126,8 +121,6 @@ const makeMoveOnline = function (index, element) {
             over: checkForWinner()[2]
           }
         }
-        api.sendMove(move)
-        return status[0]
       }
     }
   }

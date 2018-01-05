@@ -31,7 +31,6 @@ const onAiMakeMove = function () {
 const onMakeMove = function () {
   if (store.isWaiting) return
   const index = this.dataset.index
-  // let message
   const move = logic.makeMove(index, this)
   if (store.game && (store.game.player_o || store.game.player_o_id)) {
     // message = logic.makeMoveOnline(index, this)
@@ -53,7 +52,6 @@ const onMakeMove = function () {
       ui.sendMoveFailure(move)
     }
   }
-  // $('#message').text(message)
 }
 
 const onGetPlayerStats = function () {
