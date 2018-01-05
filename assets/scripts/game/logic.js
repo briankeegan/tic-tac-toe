@@ -68,12 +68,14 @@ const checkForWinner = function (game) {
 const makeMove = function (index, element) {
   const board = store.board
   if (!store.user1) {
-    uimethods.updateMessage('Log in to play the game!')
-    return
+    // uimethods.updateMessage('Log in to play the game!')
+    // return
+    return 'Log in to play the game!'
   }
   if (!board) {
-    uimethods.updateMessage('Create new game, or load a previous one!')
-    return
+    // uimethods.updateMessage('Create new game, or load a previous one!')
+    // return
+    return 'Create new game, or load a previous one!'
   }
   const status = checkForWinner()
   if (status[2]) {
@@ -84,8 +86,7 @@ const makeMove = function (index, element) {
 It's still ${status[1]}'s turn'`
     } else {
       board[index] = status[1]
-      element.innerHTML = status[1]
-      const move = {
+      return {
         game: {
           cell: {
             index: index,
@@ -94,8 +95,6 @@ It's still ${status[1]}'s turn'`
           over: checkForWinner()[2]
         }
       }
-      api.sendMove(move)
-      return checkForWinner()[0]
     }
   }
 }
@@ -141,7 +140,7 @@ const setUpBoard = function (data) {
     $('.box' + i).text(token)
   })
   const message = checkForWinner()[0]
-  uimethods.updateMessage(message)
+  $('#message').text(message)
 }
 
 const setUpBoardOnline = function (data) {
@@ -158,15 +157,18 @@ const setUpBoardOnline = function (data) {
 }
 
 const processStats = function (games) {
+  // return array of all games, with their status
   const finished = games.filter(game => game.over)
     .map(game => checkForWinner(game))
-
+  const unfinishedOnline = games.filter(game => !game.over && game.player_o)
+  console.log(unfinishedOnline)
+  console.log(games)
   return {
-    played: games.length || 0,
+    played: games.length - unfinishedOnline.length || 0,
     won: finished.filter(game => game[0] === 'You won!').length || 0,
     lost: finished.filter(game => game[0] === 'You lost!').length || 0,
     tied: finished.filter(game => game[0] === 'Draw!').length || 0,
-    unfinished: games.filter(game => !game.over).length || 0
+    unfinished: games.filter(game => !game.over && !game.player_o).length || 0
   }
 }
 

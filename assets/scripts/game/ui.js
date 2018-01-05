@@ -5,6 +5,16 @@ const uimethods = require('../uimethods')
 const store = require('../store')
 const logic = require('./logic')
 
+const setUpBoard = function (data) {
+  store.game = data.game
+  store.board = logic.createBoard(store.game.cells)
+  store.board.forEach((token, i, arr) => {
+    $('.box' + i).text(token)
+  })
+  const message = logic.checkForWinner()[0]
+  $('#message').text(message)
+}
+
 const processGames = function (games) {
   // Clear board
   const gameInfo = $('#gameinfo')
@@ -113,6 +123,15 @@ const joinOnlineGameFailure = function (data) {
   $('#message').text('Unable to join game.  Please check game ID#')
 }
 
+const sendMoveSuccess = function (data) {
+  setUpBoard(data)
+}
+
+const sendMoveFailure = function (data) {
+  if (typeof data === 'string') $('#message').text(data)
+  else $('#message').text('Unable to make move')
+}
+
 module.exports = {
   newGameSuccess,
   newGameFailure,
@@ -125,5 +144,7 @@ module.exports = {
   openPreviousGameFailure,
   startOnlinGameSuccess,
   joinOnlineGameSuccess,
-  joinOnlineGameFailure
+  joinOnlineGameFailure,
+  sendMoveSuccess,
+  sendMoveFailure
 }

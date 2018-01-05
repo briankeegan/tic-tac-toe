@@ -21,24 +21,39 @@ const onNewGameAi = function () {
     .then(ui.newGameAiSuccess)
     .catch(ui.newGameAiFailure)
 }
-
+const onAiMakeMove = function () {
+  const ai = aiLogic.aiMove()
+  const move = logic.makeMove(ai[0], ai[1])
+  api.sendMove(move)
+    .then(ui.sendMoveSuccess)
+    .catch(ui.sendMoveFailure)
+}
 const onMakeMove = function () {
   if (store.isWaiting) return
   const index = this.dataset.index
-  let message
+  // let message
+  const move = logic.makeMove(index, this)
   if (store.game && (store.game.player_o || store.game.player_o_id)) {
-    message = logic.makeMoveOnline(index, this)
+    // message = logic.makeMoveOnline(index, this)
   } else if (store.ai) {
-    message = logic.makeMove(index, this)
-    // this is a hack
-    if (message === `Game in progress! It's o's turn`) {
-      const ai = aiLogic.aiMove()
-      message = logic.makeMove(ai[0], ai[1])
+    if (typeof move !== 'string') {
+      api.sendMove(move)
+        .then(ui.sendMoveSuccess)
+        .then(onAiMakeMove)
+        .catch(ui.sendMoveFailure)
+    } else {
+      ui.sendMoveFailure(move)
     }
   } else {
-    message = logic.makeMove(index, this)
+    if (typeof move !== 'string') {
+      api.sendMove(move)
+        .then(ui.sendMoveSuccess)
+        .catch(ui.sendMoveFailure)
+    } else {
+      ui.sendMoveFailure(move)
+    }
   }
-  $('#message').text(message)
+  // $('#message').text(message)
 }
 
 const onGetPlayerStats = function () {
