@@ -1,48 +1,47 @@
 'use strict'
 
-const uimethods = require('../uimethods')
 const store = require('../store')
 
 const signUpSuccess = function () {
-  uimethods.updateMessage('Successfully signed up!')
+  $('#message').on('Successfully signed up!')
 }
 
 const signUpFailure = function (error) {
   if (error) {
-    uimethods.updateMessage('Unable to sign up.  Please try a different email.')
+    $('#message').on('Unable to sign up.  Please try a different email.')
   } else {
-    uimethods.updateMessage('Passwords don\'t match')
+    $('#message').on('Passwords don\'t match')
   }
 }
 
 const signInSuccess = function (data) {
   store.user1 = data.user
-  uimethods.updateMessage('Succesfully signed in as ' + store.user1.email)
+  $('#message').on('Succesfully signed in as ' + store.user1.email)
   $('.after-sign-in').css('display', 'block')
   $('.inital-page').css('display', 'none')
   $('.navbar-brand').text(store.user1.email)
 }
 
 const signInFailure = function () {
-  uimethods.updateMessage('Invalid username or password')
+  $('#message').on('Invalid username or password')
 }
 
 const changePasswordSuccess = function (data) {
   $('.navbar-collapse').collapse('hide')
-  uimethods.updateMessage('Successfully changed password!')
+  $('#message').on('Successfully changed password!')
 }
 
 const changePasswordFailure = function (error) {
   if (error) {
-    uimethods.updateMessage('Error changing password')
+    $('#message').on('Error changing password')
   } else {
-    uimethods.updateMessage('Passwords don\'t match')
+    $('#message').on('Passwords don\'t match')
   }
 }
 
 const logoutSuccess = function () {
   $('.navbar-collapse').collapse('hide')
-  uimethods.updateMessage('Successfully signed out!')
+  $('#message').on('Successfully signed out!')
   store.user1 = null
   store.games = null
   store.game = null
@@ -56,7 +55,7 @@ const logoutSuccess = function () {
 }
 
 const logoutFailure = function () {
-  uimethods.updateMessage('Error in signing out.  Maybe you\'re not signed in?')
+  $('#message').on('Error in signing out.  Maybe you\'re not signed in?')
 }
 
 module.exports = {

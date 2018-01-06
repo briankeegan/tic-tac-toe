@@ -25,8 +25,6 @@ const onNewGameAi = function () {
 const onAiMakeMove = function () {
   const ai = aiLogic.aiMove()
   const move = logic.makeMove(ai[0], ai[1])
-  console.log('What?')
-  console.log(move)
   if (typeof move !== 'string') {
     api.sendMove(move)
       .then(ui.sendMoveSuccess)
@@ -64,7 +62,7 @@ const onMakeMove = function () {
     }
     // Playing locally
   } else {
-    if (typeof move !== 'string') {
+    if ((typeof move !== 'string') && (move !== undefined)) {
       api.sendMove(move)
         .then(ui.sendMoveSuccess)
         .catch(ui.sendMoveFailure)

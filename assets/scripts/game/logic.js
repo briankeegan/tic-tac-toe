@@ -1,7 +1,5 @@
 'use strict'
 
-const uimethods = require('../uimethods')
-
 const tokens = ['x', 'o']
 const api = require(`./api`)
 const store = require(`../store`)
@@ -68,12 +66,10 @@ const checkForWinner = function (game) {
 const makeMove = function (index, element) {
   const board = store.board
   if (!store.user1) {
-    uimethods.updateMessage('Log in to play the game!')
-    return
+    return 'Log in to play the game!'
   }
   if (!board) {
-    uimethods.updateMessage('Create new game, or load a previous one!')
-    return
+    return 'Create new game, or load a previous one!'
   }
   const status = checkForWinner()
   if (status[2]) {
@@ -131,15 +127,15 @@ const makeMoveOnline = function (index, element) {
   }
 }
 
-const setUpBoard = function (data) {
-  store.game = data.game
-  store.board = createBoard(store.game.cells)
-  store.board.forEach((token, i, arr) => {
-    $('.box' + i).text(token)
-  })
-  const message = checkForWinner()[0]
-  uimethods.updateMessage(message)
-}
+// const setUpBoard = function (data) {
+//   store.game = data.game
+//   store.board = createBoard(store.game.cells)
+//   store.board.forEach((token, i, arr) => {
+//     $('.box' + i).text(token)
+//   })
+//   const message = checkForWinner()[0]
+//   $('#message').on(message)
+// }
 
 const setUpBoardOnline = function (data) {
   Object.keys(data.game).forEach(cur => {
@@ -151,7 +147,7 @@ const setUpBoardOnline = function (data) {
     $('.box' + i).text(token)
   })
   const message = checkForWinner()[0]
-  uimethods.updateMessage(message)
+  $('#message').on(message)
 }
 
 const processStats = function (games) {
@@ -175,7 +171,7 @@ module.exports = {
   checkForWinner,
   makeMove,
   createBoard,
-  setUpBoard,
+  // setUpBoard,
   processStats,
   makeMoveOnline,
   setUpBoardOnline,

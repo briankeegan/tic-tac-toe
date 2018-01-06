@@ -1,10 +1,8 @@
 'use strict'
 
 const store = require('../store')
-// const config = require('../config')
 const api = require(`./api`)
 const logic = require('../game/logic')
-// const ui = require(`./ui`)
 
 const onCreateGameWatcher = function () {
   const gameWatcher = api.resourceWatcher(300000)

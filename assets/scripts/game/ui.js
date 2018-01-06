@@ -1,7 +1,5 @@
 'use strict'
 
-const uimethods = require('../uimethods')
-
 const store = require('../store')
 const logic = require('./logic')
 
@@ -15,17 +13,21 @@ const setUpBoard = function (data) {
   $('#message').text(message)
 }
 
-const processGames = function (games) {
+const processGames = function (games, callback, element) {
+  // defaults to gameinfo, but can be used for more...
+  const gameInfo = element || $('#gameinfo')
   // Clear board
-  const gameInfo = $('#gameinfo')
   gameInfo.empty()
-  games.forEach((game, i) => {
-    // if game is over or it is the current game being played skip game
-    if (game.over ||
+  const c = callback ||
+  // Default callback is game is over or it is the current game being played skip game
+  function (game) {
+    return (game.over ||
       game.player_o ||
-      (store.game && store.game.id === game.id)) {
-      return
-    }
+      (store.game && store.game.id === game.id))
+  }
+  games.forEach((game, i) => {
+    // if the call back returns true, game will be skipped
+    if (c(game)) return
     // copy the eleemnts from the orginal ttt board
     const tttContainer = document.querySelector('.ttt-container')
     const tttGame = tttContainer.cloneNode(true)
@@ -62,23 +64,23 @@ const processGames = function (games) {
 const newGameSuccess = function (data) {
   $('.navbar-collapse').collapse('hide')
   logic.setUpBoard(data)
-  uimethods.updateMessage('New game created.  Good luck!')
+  $('#message').on('New game created.  Good luck!')
   store.ai = false
 }
 
 const newGameFailure = function () {
-  uimethods.updateMessage('Failed to create New Game')
+  $('#message').on('Failed to create New Game')
 }
 
 const newGameAiSuccess = function (data) {
   store.ai = true
   $('.navbar-collapse').collapse('hide')
   logic.setUpBoard(data)
-  uimethods.updateMessage('AI cannot be defeated... beep beep boop')
+  $('#message').on('AI cannot be defeated... beep beep boop')
 }
 
 const newGameAiFailure = function () {
-  uimethods.updateMessage('Failed to create New Game With Friendly AI')
+  $('#message').on('Failed to create New Game With Friendly AI')
 }
 
 const getPlayerStatsSuccess = function (data) {
@@ -95,7 +97,7 @@ const getPlayerGamesSuccess = function (data) {
 }
 
 const getPlayerStatsFailure = function () {
-  uimethods.updateMessage('failed to get games')
+  $('#message').on('failed to get games')
 }
 
 const openPreviousGameSuccess = function (data) {
@@ -104,13 +106,13 @@ const openPreviousGameSuccess = function (data) {
   logic.setUpBoard(data)
 }
 const openPreviousGameFailure = function () {
-  uimethods.updateMessage('Unable to retrieve game')
+  $('#message').on('Unable to retrieve game')
 }
 
 const startOnlinGameSuccess = function (data) {
   store.ai = false
   document.getElementById('secretInput').value = store.game.id
-  uimethods.updateMessage('Waiting for player to join...')
+  $('#message').on('Waiting for player to join...')
   store.isWaiting = true
 }
 
