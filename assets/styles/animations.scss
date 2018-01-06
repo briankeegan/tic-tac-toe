@@ -1,23 +1,26 @@
 $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 
 @keyframes celebrate {
-  0% {
-    color: $color2;
-   }
+  0% {color: $color2;}
+  50% {color: $color3;}
+  100% {color: $color2;}
+}
 
-  50% {
-    color: $color3;
-  }
-
-  100% {
-    color: $color2;
+@keyframes spin {
+  @for $i from 0 through 100 {
+    #{$i * 1%} {
+      transform: rotate(#{$i / 10}turn);
+    }
   }
 }
+
+// https://stackoverflow.com/questions/15994136/sass-or-less-keyframes-percentage-loop
 
 .winner {
   animation-duration: 1.5s;
   animation-iteration-count: infinite;
-  animation-name: celebrate;
+  animation-name: celebrate, spin;
+  animation-timing-function: ease-in-out;
 }
 //
 // div {
