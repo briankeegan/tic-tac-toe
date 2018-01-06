@@ -7,10 +7,17 @@ const setUpBoard = function (data) {
   store.game = data.game
   store.board = logic.createBoard(store.game.cells)
   store.board.forEach((token, i, arr) => {
-    $('.box' + i).text(token)
+    const box = $('.box' + i)
+    box.text(token)
+    box.removeClass('winner')
   })
-  const message = logic.checkForWinner()[0]
-  $('#message').text(message)
+  const status = logic.checkForWinner()
+  $('#message').text(status[0])
+  if (Array.isArray(status[1])) {
+    status[1].forEach(i => {
+      $('.ttt-container .box' + i).addClass('winner')
+    })
+  }
 }
 
 const processGames = function (games, callback, element) {
@@ -63,7 +70,7 @@ const processGames = function (games, callback, element) {
 
 const newGameSuccess = function (data) {
   $('.navbar-collapse').collapse('hide')
-  logic.setUpBoard(data)
+  setUpBoard(data)
   $('#message').on('New game created.  Good luck!')
   store.ai = false
 }
@@ -75,7 +82,7 @@ const newGameFailure = function () {
 const newGameAiSuccess = function (data) {
   store.ai = true
   $('.navbar-collapse').collapse('hide')
-  logic.setUpBoard(data)
+  setUpBoard(data)
   $('#message').on('AI cannot be defeated... beep beep boop')
 }
 
@@ -103,7 +110,7 @@ const getPlayerStatsFailure = function () {
 const openPreviousGameSuccess = function (data) {
   store.ai = false
   $('.navbar-collapse').collapse('hide')
-  logic.setUpBoard(data)
+  setUpBoard(data)
 }
 const openPreviousGameFailure = function () {
   $('#message').on('Unable to retrieve game')
@@ -117,7 +124,7 @@ const startOnlinGameSuccess = function (data) {
 }
 
 const joinOnlineGameSuccess = function (data) {
-  logic.setUpBoard(data)
+  setUpBoard(data)
   $('#message').text(`Successfully joined game with ${data.game.player_x.email}`)
 }
 

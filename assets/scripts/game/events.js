@@ -40,6 +40,7 @@ const onMakeMove = function () {
     const message = logic.makeMoveOnline(index, this)
     $('#message').text(message)
     // this is the route I want to take, but I can't test right now...
+    // I will also change the logic file to match
 
     // const onlineMove = logic.makeMoveOnline(index, this)
     // if (typeof onlineMove !== 'string') {

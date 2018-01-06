@@ -128,16 +128,6 @@ const makeMoveOnline = function (index, element) {
   }
 }
 
-// const setUpBoard = function (data) {
-//   store.game = data.game
-//   store.board = createBoard(store.game.cells)
-//   store.board.forEach((token, i, arr) => {
-//     $('.box' + i).text(token)
-//   })
-//   const message = checkForWinner()[0]
-//   $('#message').on(message)
-// }
-
 const setUpBoardOnline = function (data) {
   Object.keys(data.game).forEach(cur => {
     if (data.game[cur]) store.game[cur] = data.game[cur]
