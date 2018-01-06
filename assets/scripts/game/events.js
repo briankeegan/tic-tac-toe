@@ -3,7 +3,7 @@
 const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require(`./api`)
 const ui = require(`./ui`)
-const uimethods = require('../uimethods')
+const copyToClipBoard = require('../copyToClipBoard')
 const multiplayerEvents = require('../multiplayer/events')
 const aiLogic = require('../ai/logic')
 const store = require('../store')
@@ -132,7 +132,7 @@ const addHandler = function () {
   // when modal is closed, reset content
   $('#openPreviousGameModal').on('hidden.bs.modal', onOpenPreviousGameModalClose)
   $('#startOnlineGameButton').on('click', onStartOnlineGame)
-  $('#startOnlinGameId').on('click', uimethods.copyToClipBoard)
+  $('#startOnlinGameId').on('click', copyToClipBoard)
   $('#joinOnlineGame').on('submit', onJoinOnlineGame)
 }
 

@@ -6,6 +6,4 @@ const copyToClipBoard = function () {
   document.execCommand('copy')
 }
 
-module.exports = {
-  copyToClipBoard
-}
+module.exports = copyToClipBoard
