@@ -15,7 +15,6 @@ const findX = function (board, moves = [0, 1, 2, 3, 4, 5, 6, 7, 8]) {
 }
 
 const winScenerio = function (board, optionalToken) {
-  console.log(logic.winningCombos, 'wining combos')
   const token = optionalToken || 'o'
   // consider removing emptyspots
   const emptySpots = findEmptySpot(board)

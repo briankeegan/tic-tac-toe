@@ -25,6 +25,7 @@ const checkForWinningMove = function (token, board, indexes) {
 
 const checkForWinner = function (game) {
   const board = (game && game.cells) || store.board
+  // This is a workaround so I can determine win status based on previous games
   const playersToken = (game &&
     game.player_o) ||
     (store.user1.id ===
@@ -171,7 +172,6 @@ module.exports = {
   checkForWinner,
   makeMove,
   createBoard,
-  // setUpBoard,
   processStats,
   makeMoveOnline,
   setUpBoardOnline,
