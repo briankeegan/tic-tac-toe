@@ -7,15 +7,16 @@ const setUpBoard = function (data) {
   store.game = data.game
   store.board = logic.createBoard(store.game.cells)
   store.board.forEach((token, i, arr) => {
-    const box = $('.box' + i)
-    box.text(token)
-    box.removeClass('winner')
+    const box = document.querySelector('.box' + i)
+    box.innerHTML = token
   })
   const status = logic.checkForWinner()
   $('#message').text(status[0])
   if (Array.isArray(status[1])) {
     status[1].forEach(i => {
-      $('.ttt-container .box' + i).addClass('winner')
+      const box = document.querySelector('.box' + i)
+      const text = box.innerHTML
+      box.innerHTML = `<div class="winner">${text}</div>`
     })
   }
 }
