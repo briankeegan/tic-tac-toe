@@ -157,14 +157,17 @@ const setUpBoardOnline = function (data) {
 const processStats = function (games) {
   const finished = games.filter(game => game.over)
     .map(game => checkForWinner(game))
+  const won = finished.filter(game => game[0] === 'You won!')
+  const lost = finished.filter(game => game[0] === 'You lost!')
+  const tied = finished.filter(game => game[0] === 'Draw!')
+  const unfinished = games.filter(game => !game.over && !game.player_o)
   const unfinishedOnline = games.filter(game => !game.over && game.player_o)
   return {
     played: games.length - unfinishedOnline.length || 0,
-    // played: games.length || 0,
-    won: finished.filter(game => game[0] === 'You won!').length || 0,
-    lost: finished.filter(game => game[0] === 'You lost!').length || 0,
-    tied: finished.filter(game => game[0] === 'Draw!').length || 0,
-    unfinished: games.filter(game => !game.over && !game.player_o).length || 0
+    won: won.length || 0,
+    lost: lost.length || 0,
+    tied: tied.length || 0,
+    unfinished: unfinished.length || 0
   }
 }
 
