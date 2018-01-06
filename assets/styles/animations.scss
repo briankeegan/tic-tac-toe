@@ -22,11 +22,15 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
   animation-name: celebrate, spin;
   animation-timing-function: ease-in-out;
 }
-//
-// div {
-//     width: 100px;
-//     height: 100px;
-//     background-color: red;
-//     animation-name: example;
-//     animation-duration: 4s;
-// }
+
+.delay0 {
+  animation-delay: .25;
+}
+
+.delay1 {
+  animation-delay: .5s;
+}
+
+.delay2 {
+  animation-delay: .75s;
+}

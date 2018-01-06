@@ -13,10 +13,10 @@ const setUpBoard = function (data) {
   const status = logic.checkForWinner()
   $('#message').text(status[0])
   if (Array.isArray(status[1])) {
-    status[1].forEach(i => {
-      const box = document.querySelector('.box' + i)
+    status[1].forEach((index, i) => {
+      const box = document.querySelector('.box' + index)
       const text = box.innerHTML
-      box.innerHTML = `<div class="winner">${text}</div>`
+      box.innerHTML = `<div class="winner delay${i}">${text}</div>`
     })
   }
 }
