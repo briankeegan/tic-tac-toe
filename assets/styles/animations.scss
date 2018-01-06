@@ -1,0 +1,29 @@
+$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+
+@keyframes celebrate {
+  0% {
+    color: $color2;
+   }
+
+  50% {
+    color: $color3;
+  }
+
+  100% {
+    color: $color2;
+  }
+}
+
+.winner {
+  animation-duration: 1.5s;
+  animation-iteration-count: infinite;
+  animation-name: celebrate;
+}
+//
+// div {
+//     width: 100px;
+//     height: 100px;
+//     background-color: red;
+//     animation-name: example;
+//     animation-duration: 4s;
+// }
