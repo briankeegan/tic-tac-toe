@@ -5,7 +5,7 @@ const api = require(`./api`)
 const ui = require(`./ui`)
 const copyToClipBoard = require('../copyToClipBoard')
 const multiplayerEvents = require('../multiplayer/events')
-const aiLogic = require('../ai/logic')
+const aiMove = require('./aiMove')
 const store = require('../store')
 
 const logic = require('./logic')
@@ -23,7 +23,7 @@ const onNewGameAi = function () {
 }
 
 const onAiMakeMove = function () {
-  const ai = aiLogic.aiMove()
+  const ai = aiMove()
   const move = logic.makeMove(ai[0], ai[1])
   if (typeof move !== 'string') {
     api.sendMove(move)

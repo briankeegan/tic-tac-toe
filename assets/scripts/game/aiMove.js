@@ -120,6 +120,4 @@ const aiMove = function () {
   return [move, element]
 }
 
-module.exports = {
-  aiMove
-}
+module.exports = aiMove
