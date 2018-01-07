@@ -47,7 +47,7 @@ After reviewing the required specs I decided to update my wireframe.
 1.   Add to Board
     -  Turn rotates between x and o
     -  Can not choose already occupied spots
-1.   Check Board for Winner
+    -  Check Board for Winner
 
 ### Authentication
 1.   Sign Up (curl then web app)
@@ -85,5 +85,121 @@ After reviewing the required specs I decided to update my wireframe.
   - Additionally I would like to:
 1.   Create multi-player game from different devices
 2.   Add a table-side chat to game
-3   Add AI element to game (one you can't beat!)
+3.   Add AI element to game (one you can't beat!)
 4.  Indicate with color(SCSS) the winning combination
+
+
+##    Development
+### Structure
+###### HTML / Bootstrap
+The [`./index.html`](./index.html)  is divided into a `navbar`, `main` and `footer
+It is written with bootstrap, but styled in SCSS
+###### SCSS
+The [`./assets/styles/`](./assets/styles/) was designed such that a change in one place (for example colors) will allow changes everywhere else in the style. It is divided as follows
+[`animations.scss`](./assets/styles/animations.scss) for `@keyframe`, `.winning` and any animation or moving on the page.  Use SCSS loop to create smooth transitions with animation
+```scss
+@keyframes spin {
+  @for $i from 0 through 100 {
+    #{$i * 1%} {
+      transform: rotate(#{$i / 10}turn);
+    }
+  }
+}
+```
+[`breakpoints.scss`](./assets/styles/breakpoints.scss) for `@breakpoint`,  Use `mixens` and standard bootstrap breakpoints to dynamically create boxes / tic-tac-toe squares
+[`colors.scss`](./assets/styles/colors.scss) organize colors and make simple color rules.
+[`dimensions.scss`](./assets/styles/dimensions.scss) Create dimensions standards for page
+[`display.scss`](./assets/styles/display.scss) Display used for classes that hide or show content.
+[`formatting.scss`](./assets/styles/formatting.scss)  Formatting is mostly automatically done in BootStrap, but the footer and .message are styled here
+[`index.scss`](./assets/styles/index.scss) This file imports and correctly orderes all other files in this directory.  It has no rules on it’s own
+[`tttboarders.scss`](./assets/styles/tttboarders.scss) or tic-tac-toe-boarders, is how the board is created.  Using a mixin I was able to easily format the borders so that they only show on correct side, and are consistent.
+###### JavaScript
+The [`./assets/scripts/`](./assets/scripts/) is generally (I’m only including what I edited or used) divided as follows:
+	-	[`config.js`](./assets/scripts/config.js) accesses the client side API created by [GA](https://generalassemb.ly/)
+	-	[`copyToClipBoard.js`](./assets/scripts/copyToClipBoard.js) is a single function as described
+	-	[`index.js`](./assets/scripts/index.js) is the access point for all functions.  Contains the different event listeners required in
+	-	[`store.js`](./assets/scripts/store.js)’s relevant data, authentication tokens, stored game, board and more
+	-	[`authentication/`](./assets/scripts/authentication/) contains all the account information, such as sign-in, sign-up, change-password and sign-out.  It is divided by:
+		1.	[`api.js`](./assets/scripts/game/api.js) or application programming interface is where JS sends ajax requests to client server
+1. 	[`events.js`](./assets/scripts/game/events.js) is where event listeners are added.
+		1.	[`ui.js`](./assets/scripts/game/ui.js) or user interface, is where the user is notified of success or failure of events.
+
+	-	[`game/`](./assets/scripts/game/)
+		1.	[`api.js`](./assets/scripts/game/api.js) or application programming interface is where JS sends ajax requests to client server
+1. 	[`events.js`](./assets/scripts/game/events.js) is where event listeners are added.
+		1.	[`ui.js`](./assets/scripts/game/ui.js) or user interface, is where the user is notified of success or failure of events.
+		1.	[`aiMove.js/`](./assets/scripts/game/aiMove.js)  Is a large function that controls exactly how the ai plays. Implemented in events
+		1.	[`logic.js/`](./assets/scripts/game/logic.js) contains the game logic, when and if a player may put a token in a particular place, and if they won / lost  / drew the game
+
+	-	[`multiplayer/`](./assets/scripts/multiplayer/) contains `ai/` and `events/` directories.  Eventually would like to combine into one `js` file and put in `game/`
+
+
+
+
+
+### Process
+	I tried to commit small and frequently and for the most part did so.
+	-Steps taken
+	1.	Create basic Bootstrap layout
+	1.	Create wire-frame
+	1. 	Write user story
+1.	Create tic-tac-toe board using SCSS
+	1. 	Create authentication:
+		1.	Sign-in
+		1.	Sign-up
+		1.	logout
+		1.	change-password
+	1. 	Create game logic.  Game logic is based off of the api, and assumption that the board is represented by an `Array` of length 9.
+	1.	Create basic interface to actual bootstrap html (no link to server yet)
+	1.	Create user interface, to mark according to
+	1.	Create api that connects game with server
+		1.  Create Game
+		1.  Send move
+		1.  Retrieve stats
+		1.  Retrieve previous game
+	1.	Update responsiveness of game (SCSS)
+	1.	Create Multiplayer
+		1.	Create game button, with ability to copy and paste game id
+		1. 	Join game button, which has input which takes game id
+	1.	Fix some visual aspects, with Bootstrap and SCSS / create new wireframe
+	1.	Create AI
+		1.  Lots and lots of testing!  Initially did not work as expected.
+		1. Fix bugs accordingly
+	1.	Attempt to create own copy of heroku api, in order to continue testing / refactoring multiplayer.
+		1.	Create copy, and launch, but unable to connect
+		1. 	After a couple hours of testing, revert back to original api
+	1.	Refactor
+		1.	Re-organize file structure
+		1. 	Remove unnecessary code
+	1.	Add some fun show win classes
+	1.	Finish README.md
+###Difficulties encountered
+	-	Creating the multiplayer section, spent much time trying to understand how the helper function worked.  Eventually successfully created, but initially made it without closing it ever.  This code error aided in slowly down and eventually stopping the server for some hours.
+	-	Tried to circular references through require.  Very frustrating bug, but once I understood the problem, refactored code so circular references where unnecessary.
+	-	Once I added multiplayer, I had to refactor game logic so that stats would properly show who one or lost.  Originally it assumed player was always ‘x’
+###Issues
+	-	When the game visually shows the winner, it only shows one row.  If player won in two places, it is not indicated
+	-	Organization of multiplayer could be better
+
+###Features to Add
+1.   Make more user friendly, play again button, option to play vs AI
+1.   Create tableside chat as I had planned
+1.   Create a countdown clock for multiplayer, and if there is a timeout by one player, make it their loss!
+2.   Display player_o's user name on player join on x side
+
+### Credit
+I would like to thank:
+
+-	[Sophia Derugen-Toomey](https://github.com/quidprocrow)  for helping with AI ideas, and my inspiration for my README.md file, and this Credit section!
+
+-	[Kostant](https://github.com/Ko-stant) for dropdown inspiration.  He reminded me how sleek Bootstrap dropdowns look!
+
+-	[Shuan](https://github.com/skinnybuff) for talking through AI concepts, and helping me review page.
+- 
+- [Ted](https://github.com/TedCart) for inadvertently solving display player_o's user name porblem.
+
+- 	[Rebecca](https://github.com/rcoras) & [Sarah](https://github.com/smb2255) for coding and climbing.  Parallel work is very motivating!
+
+- 	[GA](https://generalassemb.ly/) staff for re-deploying gameplay APIU after crash! Also for creating API, and templateI used for the whole project.
+
+-	[bookcasey](https://stackoverflow.com/users/1052923/bookcasey) for is answer about sass/scss [percentage-loops](https://stackoverflow.com/questions/15994136/sass-or-less-keyframes-percentage-loop)
