@@ -91,10 +91,10 @@ After reviewing the required specs I decided to update my wireframe.
 
 ##    Development
 ### Structure
-###### HTML / Bootstrap
+##### HTML / Bootstrap
 The [`./index.html`](./index.html)  is divided into a `navbar`, `main` and `footer
 It is written with bootstrap, but styled in SCSS
-###### SCSS
+##### SCSS
   - The [`./assets/styles/`](./assets/styles/) was designed such that a change in one place (for example colors) will allow changes everywhere else in the style. It is divided as follows
   - [`animations.scss`](./assets/styles/animations.scss) for `@keyframe`, `.winning` and any animation or moving on the page.  Use SCSS loop to create smooth transitions with animation
 ```scss
@@ -113,7 +113,7 @@ It is written with bootstrap, but styled in SCSS
   - [`formatting.scss`](./assets/styles/formatting.scss)  Formatting is mostly automatically done in BootStrap, but the footer and .message are styled here
   - [`index.scss`](./assets/styles/index.scss) This file imports and correctly orderes all other files in this directory.  It has no rules on it’s own
   - [`tttboarders.scss`](./assets/styles/tttboarders.scss) or tic-tac-toe-boarders, is how the board is created.  Using a mixin I was able to easily format the borders so that they only show on correct side, and are consistent.
-###### JavaScript
+##### JavaScript
 The [`./assets/scripts/`](./assets/scripts/) is generally (I’m only including what I edited or used) divided as follows:
 	-	[`config.js`](./assets/scripts/config.js) accesses the client side API created by [GA](https://generalassemb.ly/)
 	-	[`copyToClipBoard.js`](./assets/scripts/copyToClipBoard.js) is a single function as described
@@ -173,15 +173,19 @@ The [`./assets/scripts/`](./assets/scripts/) is generally (I’m only including 
 		1. 	Remove unnecessary code
 	1.	Add some fun show win classes
 	1.	Finish README.md
-###Difficulties encountered
+
+
+### Difficulties encountered
 	-	Creating the multiplayer section, spent much time trying to understand how the helper function worked.  Eventually successfully created, but initially made it without closing it ever.  This code error aided in slowly down and eventually stopping the server for some hours.
 	-	Tried to circular references through require.  Very frustrating bug, but once I understood the problem, refactored code so circular references where unnecessary.
 	-	Once I added multiplayer, I had to refactor game logic so that stats would properly show who one or lost.  Originally it assumed player was always ‘x’
-###Issues
+
+
+### Issues
 	-	When the game visually shows the winner, it only shows one row.  If player won in two places, it is not indicated
 	-	Organization of multiplayer could be better
 
-###Features to Add
+### Features to Add
 1.   Make more user friendly, play again button, option to play vs AI
 1.   Create tableside chat as I had planned
 1.   Create a countdown clock for multiplayer, and if there is a timeout by one player, make it their loss!
