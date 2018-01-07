@@ -175,15 +175,15 @@ The [`./assets/scripts/`](./assets/scripts/) is generally (I’m only including 
 	1.	Finish README.md
 
 
-### Difficulties encountered
-	-	Creating the multiplayer section, spent much time trying to understand how the helper function worked.  Eventually successfully created, but initially made it without closing it ever.  This code error aided in slowly down and eventually stopping the server for some hours.
-	-	Tried to circular references through require.  Very frustrating bug, but once I understood the problem, refactored code so circular references where unnecessary.
-	-	Once I added multiplayer, I had to refactor game logic so that stats would properly show who one or lost.  Originally it assumed player was always ‘x’
+### Difficulties
+	-	 	Creating the multiplayer section, spent much time trying to understand how the helper function worked.  Eventually successfully created, but initially made it without closing it ever.  This code error aided in slowly down and eventually stopping the server for some hours.
+	- 	  to circular references through require.  Very frustrating bug, but once I understood the problem, refactored code so circular references where unnecessary.
+	-	  Once I added multiplayer, I had to refactor game logic so that stats would properly show who one or lost.  Originally it assumed player was always ‘x’
 
 
 ### Issues
-	-	When the game visually shows the winner, it only shows one row.  If player won in two places, it is not indicated
-	-	Organization of multiplayer could be better
+	-	  When the game visually shows the winner, it only shows one row.  If player won in two places, it is not indicated
+	-	  Organization of multiplayer could be better
 
 ### Features to Add
 1.   Make more user friendly, play again button, option to play vs AI
