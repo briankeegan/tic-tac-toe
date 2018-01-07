@@ -95,8 +95,8 @@ After reviewing the required specs I decided to update my wireframe.
 The [`./index.html`](./index.html)  is divided into a `navbar`, `main` and `footer
 It is written with bootstrap, but styled in SCSS
 ###### SCSS
-The [`./assets/styles/`](./assets/styles/) was designed such that a change in one place (for example colors) will allow changes everywhere else in the style. It is divided as follows
-[`animations.scss`](./assets/styles/animations.scss) for `@keyframe`, `.winning` and any animation or moving on the page.  Use SCSS loop to create smooth transitions with animation
+  - The [`./assets/styles/`](./assets/styles/) was designed such that a change in one place (for example colors) will allow changes everywhere else in the style. It is divided as follows
+  - [`animations.scss`](./assets/styles/animations.scss) for `@keyframe`, `.winning` and any animation or moving on the page.  Use SCSS loop to create smooth transitions with animation
 ```scss
 @keyframes spin {
   @for $i from 0 through 100 {
@@ -106,13 +106,13 @@ The [`./assets/styles/`](./assets/styles/) was designed such that a change in on
   }
 }
 ```
-[`breakpoints.scss`](./assets/styles/breakpoints.scss) for `@breakpoint`,  Use `mixens` and standard bootstrap breakpoints to dynamically create boxes / tic-tac-toe squares
-[`colors.scss`](./assets/styles/colors.scss) organize colors and make simple color rules.
-[`dimensions.scss`](./assets/styles/dimensions.scss) Create dimensions standards for page
-[`display.scss`](./assets/styles/display.scss) Display used for classes that hide or show content.
-[`formatting.scss`](./assets/styles/formatting.scss)  Formatting is mostly automatically done in BootStrap, but the footer and .message are styled here
-[`index.scss`](./assets/styles/index.scss) This file imports and correctly orderes all other files in this directory.  It has no rules on it’s own
-[`tttboarders.scss`](./assets/styles/tttboarders.scss) or tic-tac-toe-boarders, is how the board is created.  Using a mixin I was able to easily format the borders so that they only show on correct side, and are consistent.
+  - [`breakpoints.scss`](./assets/styles/breakpoints.scss) for `@breakpoint`,  Use `mixens` and standard bootstrap breakpoints to dynamically create boxes / tic-tac-toe squares
+  - [`colors.scss`](./assets/styles/colors.scss) organize colors and make simple color rules.
+  - [`dimensions.scss`](./assets/styles/dimensions.scss) Create dimensions standards for page
+  - [`display.scss`](./assets/styles/display.scss) Display used for classes that hide or show content.
+  - [`formatting.scss`](./assets/styles/formatting.scss)  Formatting is mostly automatically done in BootStrap, but the footer and .message are styled here
+  - [`index.scss`](./assets/styles/index.scss) This file imports and correctly orderes all other files in this directory.  It has no rules on it’s own
+  - [`tttboarders.scss`](./assets/styles/tttboarders.scss) or tic-tac-toe-boarders, is how the board is created.  Using a mixin I was able to easily format the borders so that they only show on correct side, and are consistent.
 ###### JavaScript
 The [`./assets/scripts/`](./assets/scripts/) is generally (I’m only including what I edited or used) divided as follows:
 	-	[`config.js`](./assets/scripts/config.js) accesses the client side API created by [GA](https://generalassemb.ly/)
@@ -139,11 +139,11 @@ The [`./assets/scripts/`](./assets/scripts/) is generally (I’m only including 
 
 ### Process
 	I tried to commit small and frequently and for the most part did so.
-	-Steps taken
+  -   Steps taken
 	1.	Create basic Bootstrap layout
 	1.	Create wire-frame
 	1. 	Write user story
-1.	Create tic-tac-toe board using SCSS
+- 	Create tic-tac-toe board using SCSS
 	1. 	Create authentication:
 		1.	Sign-in
 		1.	Sign-up
@@ -195,7 +195,7 @@ I would like to thank:
 -	[Kostant](https://github.com/Ko-stant) for dropdown inspiration.  He reminded me how sleek Bootstrap dropdowns look!
 
 -	[Shuan](https://github.com/skinnybuff) for talking through AI concepts, and helping me review page.
-- 
+-
 - [Ted](https://github.com/TedCart) for inadvertently solving display player_o's user name porblem.
 
 - 	[Rebecca](https://github.com/rcoras) & [Sarah](https://github.com/smb2255) for coding and climbing.  Parallel work is very motivating!
