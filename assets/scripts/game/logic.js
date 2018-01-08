@@ -74,7 +74,7 @@ const makeMove = function (index, element) {
   }
   const status = checkForWinner()
   if (status[2]) {
-    return status[0] + ' Game is over!'
+    return 'keep'
   } else {
     if (board[index] !== '') {
       return `You can't go where a token has already been placed!

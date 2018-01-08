@@ -50,7 +50,6 @@ const onMakeMove = function () {
     // } else {
     //   ui.sendMoveFailure(onlineMove)
     // }
-
     // Playing AI
   } else if (store.ai) {
     if (typeof move !== 'string') {
@@ -124,6 +123,11 @@ const onJoinOnlineGame = function (event) {
     .catch(ui.joinOnlineGameFailure)
 }
 
+<<<<<<< HEAD
+=======
+<<<<<<< Updated upstream
+=======
+>>>>>>> knitpicking
 const onHover = function () {
   const insideBox = this.innerHTML
   if (insideBox) {
@@ -132,6 +136,19 @@ const onHover = function () {
     this.style.cursor = 'pointer'
   }
 }
+<<<<<<< HEAD
+=======
+
+const onPlayAgain = function () {
+  if (store.ai) {
+    onNewGameAi()
+  } else {
+    onNewGame()
+  }
+}
+
+>>>>>>> Stashed changes
+>>>>>>> knitpicking
 const addHandler = function () {
   $('#newGame').on('click', onNewGame)
   $('#newGameAi').on('click', onNewGameAi)
@@ -139,6 +156,7 @@ const addHandler = function () {
   $('.box').hover(onHover)
   $('#playerStatsButton').on('click', onGetPlayerStats)
   $('#openPreviousGameButton').on('click', onGetPlayerGames)
+  $('#playAgain').on('click', onPlayAgain)
   // when modal is closed, reset content
   $('#openPreviousGameModal').on('hidden.bs.modal', onOpenPreviousGameModalClose)
   $('#startOnlineGameButton').on('click', onStartOnlineGame)
