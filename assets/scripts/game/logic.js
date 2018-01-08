@@ -137,8 +137,9 @@ const setUpBoardOnline = function (data) {
   store.board.forEach((token, i, arr) => {
     $('.box' + i).text(token)
   })
-  const message = checkForWinner()[0]
-  $('#message').text(message)
+  const status = checkForWinner()
+  $('#message').text(status[0])
+  if (status[1]) return true
 }
 
 const processStats = function (games) {
