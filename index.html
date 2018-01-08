@@ -26,14 +26,14 @@
           </div>
           <div class="collapse navbar-collapse">
             <form class="navbar-form navbar-left inital-page" id="sign-in">
-              <div class="input-group">
-                <input class="form-control" name="credentials[email]" type="text" placeholder="Email" autofocus required />
+              <div class="form-group">
+                <input class="form-control" name="credentials[email]" type="email" placeholder="Email" autofocus required />
               </div>
-              <div class="input-group">
+              <div class="form-group">
                 <input class="form-control" name="credentials[password]" type="password" placeholder="Password" required />
               </div>
-              <div class="input-group">
-                <div class="input-group-btn">
+              <div class="form-group">
+                <div class="form-group-btn">
                   <input type="submit" class="btn btn-primary" value="Sign in!" />
                 </div>
               </div>
@@ -111,11 +111,26 @@
                     </button>
               </div>
               <div class="modal-body">
-                <form id="sign-up">
-                  <input name="credentials[email]" type="text" placeholder="Email" required />
-                  <input name="credentials[password]" type="password" placeholder="Password" required />
-                  <input name="credentials[password_confirmation]" type="password" placeholder="Retype Password" required />
-                  <input type="submit" class="btn btn-primary" value="Submit!" />
+                <form id="sign-up" class="form-horizontal">
+                  <div class="form-group">
+                    <label class="hidden-xs col-sm-2 control-label">Email:</label>
+                    <div class="col-sm-10">
+                      <input class="form-control" name="credentials[email]" type="email" placeholder="Email" required />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="hidden-xs col-sm-2 control-label">Password:</label>
+                    <div class="col-sm-10">
+                      <input class="form-control" name="credentials[password]" type="password" placeholder="Password" required />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="hidden-xs col-sm-2 control-label">Retype Password:</label>
+                    <div class="col-sm-10">
+                      <input class="form-control" name="credentials[password_confirmation]" type="password" placeholder="Retype Password" required />
+                    </div>
+                  </div>
+                  <input type="submit" class="btn btn-primary form-control" value="Submit!" />
                 </form>
               </div>
               <div class="modal-footer">
@@ -135,11 +150,26 @@
                     </button>
               </div>
               <div class="modal-body">
-                <form id="change-password">
-                  <input name="passwords[old]" type="password" placeholder="Current Password" required />
-                  <input name="passwords[new]" type="password" placeholder="New Password" required />
-                  <input name="passwords[new-retyped]" type="password" placeholder="Retype New Password"required />
-                  <input type="submit" class="btn btn-primary" value="Submit!" />
+                <form id="change-password" class="form-horizontal">
+                  <div class="form-group">
+                    <label class="hidden-xs col-sm-2 control-label">Current Password:</label>
+                    <div class="col-sm-10">
+                      <input class="form-control" name="passwords[old]" type="password" placeholder="Current Password" required />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="hidden-xs col-sm-2 control-label">New Password:</label>
+                    <div class="col-sm-10">
+                      <input class="form-control" name="passwords[new]" type="password" placeholder="New Password" required />
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="hidden-xs col-sm-2 control-label">Retype New Password:</label>
+                    <div class="col-sm-10">
+                      <input class="form-control" name="passwords[new-retyped]" type="password" placeholder="Retype New Password"required />
+                    </div>
+                  </div>
+                  <input type="submit" class="btn btn-primary form-control" value="Submit!" />
                 </form>
               </div>
               <div class="modal-footer">
@@ -159,11 +189,12 @@
                     </button>
               </div>
               <div class="modal-body">
-                  <p>Games played:<span id="played"></span></p>
+                  <p>Games played*:<span id="played"></span></p>
                   <p>Games won:<span id="won"></span></p>
                   <p>Games lost:<span id="lost"></span></p>
                   <p>Games tied:<span id="tied"></span></p>
-                  <p>Unfinished Games:<span id="unfinished"></span></p>
+                  <p>Unfinished Games*:<span id="unfinished"></span></p>
+                  *Excludes unfinished online games
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -176,13 +207,14 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h2 class="modal-title">About</h2>
+                <h2 class="modal-title">Tic Tac Toe</h2>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
               </div>
               <div class="modal-body">
-                  Add "About" content here:
+                <p>'You' refers to the player that logged in.  Said player will always be player 'x' unless they join an online game hosted by another player.  Win / Loss indication are for the logged in players, as are stats</p>
+                <p>If you would like to learn more about my process please checkout the <a href="https://github.com/briankeegan/tic-tac-toe/blob/master/README.md" target="_blank">README.md</a> section for <a href="https://github.com/briankeegan/tic-tac-toe" target="_blank">this repo</a> on <a href="https://github.com/briankeegan/" target="_blank">my github</a> page!</p>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -196,7 +228,8 @@
             <div class="modal-content">
               <div class="modal-header">
                 <h2 class="modal-title">Open Previous Local Game</h2>
-                <p>*Includes all unfinished games played locally/ with friend or online.  When loaded will by played locally.</p>
+                <p>Includes all unfinished games played locally* or with AI.  When loaded will by played locally.</p>
+                <p>*taking turns on same device</p>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>

@@ -138,7 +138,7 @@ const setUpBoardOnline = function (data) {
     $('.box' + i).text(token)
   })
   const message = checkForWinner()[0]
-  $('#message').on(message)
+  $('#message').text(message)
 }
 
 const processStats = function (games) {

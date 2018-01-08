@@ -72,23 +72,23 @@ const processGames = function (games, callback, element) {
 const newGameSuccess = function (data) {
   $('.navbar-collapse').collapse('hide')
   setUpBoard(data)
-  $('#message').on('New game created.  Good luck!')
+  $('#message').text('New game created.  Good luck!')
   store.ai = false
 }
 
 const newGameFailure = function () {
-  $('#message').on('Failed to create New Game')
+  $('#message').text('Failed to create New Game')
 }
 
 const newGameAiSuccess = function (data) {
   store.ai = true
   $('.navbar-collapse').collapse('hide')
   setUpBoard(data)
-  $('#message').on('AI cannot be defeated... beep beep boop')
+  $('#message').text('AI cannot be defeated... beep beep boop')
 }
 
 const newGameAiFailure = function () {
-  $('#message').on('Failed to create New Game With Friendly AI')
+  $('#message').text('Failed to create New Game With Friendly AI')
 }
 
 const getPlayerStatsSuccess = function (data) {
@@ -105,7 +105,7 @@ const getPlayerGamesSuccess = function (data) {
 }
 
 const getPlayerStatsFailure = function () {
-  $('#message').on('failed to get games')
+  $('#message').text('failed to get games')
 }
 
 const openPreviousGameSuccess = function (data) {
@@ -114,13 +114,13 @@ const openPreviousGameSuccess = function (data) {
   setUpBoard(data)
 }
 const openPreviousGameFailure = function () {
-  $('#message').on('Unable to retrieve game')
+  $('#message').text('Unable to retrieve game')
 }
 
 const startOnlinGameSuccess = function (data) {
   store.ai = false
   document.getElementById('secretInput').value = store.game.id
-  $('#message').on('Waiting for player to join...')
+  $('#message').text('Waiting for player to join...')
   store.isWaiting = true
 }
 

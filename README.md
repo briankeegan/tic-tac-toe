@@ -12,6 +12,9 @@
 After reviewing the required specs I decided to update my wireframe.
 
 [my wire-frame updated](https://projects.invisionapp.com/freehand/document/TjHvDLQSg)
+
+After finishing my project I updated the wireframe to match my new project
+[final wire-frame](https://projects.invisionapp.com/freehand/document/wN0PUxYBJ)
 ##    My story
 -    As a user I want to access the tic-tac-toe games.
 -    As a coder I want access to the files via github
@@ -138,7 +141,9 @@ The [`./assets/scripts/`](./assets/scripts/) is generally (I’m only including 
 
 
 ### Process
+
 	I tried to commit small and frequently and for the most part did so.
+
   -   Steps taken
 	1.	Create basic Bootstrap layout
 	1.	Create wire-frame
@@ -199,11 +204,11 @@ I would like to thank:
 -	[Kostant](https://github.com/Ko-stant) for dropdown inspiration.  He reminded me how sleek Bootstrap dropdowns look!
 
 -	[Shuan](https://github.com/skinnybuff) for talking through AI concepts, and helping me review page.
--
+
 - [Ted](https://github.com/TedCart) for inadvertently solving display player_o's user name porblem.
 
 - 	[Rebecca](https://github.com/rcoras) & [Sarah](https://github.com/smb2255) for coding and climbing.  Parallel work is very motivating!
 
 - 	[GA](https://generalassemb.ly/) staff for re-deploying gameplay APIU after crash! Also for creating API, and templateI used for the whole project.
 
--	[bookcasey](https://stackoverflow.com/users/1052923/bookcasey) for is answer about sass/scss [percentage-loops](https://stackoverflow.com/questions/15994136/sass-or-less-keyframes-percentage-loop)
+-	[bookcasey](https://stackoverflow.com/users/1052923/bookcasey) for his answer about SASS/SCSS [percentage-loops](https://stackoverflow.com/questions/15994136/sass-or-less-keyframes-percentage-loop)

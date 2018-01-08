@@ -3,45 +3,45 @@
 const store = require('../store')
 
 const signUpSuccess = function () {
-  $('#message').on('Successfully signed up!')
+  $('#message').text('Successfully signed up!')
 }
 
 const signUpFailure = function (error) {
   if (error) {
-    $('#message').on('Unable to sign up.  Please try a different email.')
+    $('#message').text('Unable to sign up.  Please try a different email.')
   } else {
-    $('#message').on('Passwords don\'t match')
+    $('#message').text('Passwords don\'t match')
   }
 }
 
 const signInSuccess = function (data) {
   store.user1 = data.user
-  $('#message').on('Succesfully signed in as ' + store.user1.email)
+  $('#message').text('Succesfully signed in as ' + store.user1.email)
   $('.after-sign-in').css('display', 'block')
   $('.inital-page').css('display', 'none')
   $('.navbar-brand').text(store.user1.email)
 }
 
 const signInFailure = function () {
-  $('#message').on('Invalid username or password')
+  $('#message').text('Invalid username or password')
 }
 
 const changePasswordSuccess = function (data) {
   $('.navbar-collapse').collapse('hide')
-  $('#message').on('Successfully changed password!')
+  $('#message').text('Successfully changed password!')
 }
 
 const changePasswordFailure = function (error) {
   if (error) {
-    $('#message').on('Error changing password')
+    $('#message').text('Error changing password')
   } else {
-    $('#message').on('Passwords don\'t match')
+    $('#message').text('Passwords don\'t match')
   }
 }
 
 const logoutSuccess = function () {
   $('.navbar-collapse').collapse('hide')
-  $('#message').on('Successfully signed out!')
+  $('#message').text('Successfully signed out!')
   store.user1 = null
   store.games = null
   store.game = null
@@ -55,7 +55,7 @@ const logoutSuccess = function () {
 }
 
 const logoutFailure = function () {
-  $('#message').on('Error in signing out.  Maybe you\'re not signed in?')
+  $('#message').text('Error in signing out.  Maybe you\'re not signed in?')
 }
 
 module.exports = {
