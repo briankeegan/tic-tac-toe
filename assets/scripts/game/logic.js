@@ -111,8 +111,8 @@ const makeMoveOnline = function (index, element) {
         return `You can't go where a token has already been placed!`
       } else {
         board[index] = status[1]
-        element.innerHTML = status[1]
-        const move = {
+        // element.innerHTML = status[1]
+        return {
           game: {
             cell: {
               index: index,
@@ -121,8 +121,8 @@ const makeMoveOnline = function (index, element) {
             over: checkForWinner()[2]
           }
         }
-        api.sendMove(move)
-        return status[0]
+        // api.sendMove(move)
+        // return status[0]
       }
     }
   }

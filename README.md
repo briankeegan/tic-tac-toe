@@ -216,4 +216,4 @@ I would like to thank:
 
 -	[bookcasey](https://stackoverflow.com/users/1052923/bookcasey) for his answer about SASS/SCSS [percentage-loops](https://stackoverflow.com/questions/15994136/sass-or-less-keyframes-percentage-loop)
 
--[wiki how](https://www.wikihow.com/Win-at-Tic-Tac-Toe)'s how to win at tic-tac-toe.  I based AI logic off of this site.
+-[wiki how](https://www.wikihow.com/Win-at-Tic-Tac-Toe)'s how to win at tic-tac-toe.  I based most AI logic off of this site.

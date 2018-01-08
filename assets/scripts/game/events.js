@@ -33,25 +33,28 @@ const onAiMakeMove = function () {
 }
 const onMakeMove = function () {
   if (store.isWaiting) return
+  const isOnline = store.game && (store.game.player_o || store.game.player_o_id)
   const index = this.dataset.index
-  const move = logic.makeMove(index, this)
+  // debugger
+  const move = isOnline ? logic.makeMoveOnline(index, this) : logic.makeMove(index, this)
   // Playing online
-  if (store.game && (store.game.player_o || store.game.player_o_id)) {
-    const message = logic.makeMoveOnline(index, this)
-    $('#message').text(message)
-    // this is the route I want to take, but I can't test right now...
-    // I will also change the logic file to match
+  // if (store.game && (store.game.player_o || store.game.player_o_id)) {
+  // const message = logic.makeMoveOnline(index, this)
+  // $('#message').text(message)
+  // this is the route I want to take, but I can't test right now...
+  // I will also change the logic file to match
 
-    // const onlineMove = logic.makeMoveOnline(index, this)
-    // if (typeof onlineMove !== 'string') {
-    //   api.sendMove(onlineMove)
-    //     .then(ui.sendMoveSuccess)
-    //     .catch(ui.sendMoveFailure)
-    // } else {
-    //   ui.sendMoveFailure(onlineMove)
-    // }
-    // Playing AI
-  } else if (store.ai) {
+  // const onlineMove = logic.makeMoveOnline(index, this)
+  // if (typeof onlineMove !== 'string') {
+  //   api.sendMove(onlineMove)
+  //     .then(ui.sendMoveSuccess)
+  //     .catch(ui.sendMoveFailure)
+  // } else {
+  //   ui.sendMoveFailure(onlineMove)
+  // }
+  // // Playing AI
+  // } else
+  if (store.ai) {
     if (typeof move !== 'string') {
       api.sendMove(move)
         .then(ui.sendMoveSuccess)
