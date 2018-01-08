@@ -123,8 +123,6 @@ const onJoinOnlineGame = function (event) {
     .catch(ui.joinOnlineGameFailure)
 }
 
-<<<<<<< Updated upstream
-=======
 const onHover = function () {
   const insideBox = this.innerHTML
   if (insideBox) {
@@ -146,6 +144,7 @@ const addHandler = function () {
   $('#newGame').on('click', onNewGame)
   $('#newGameAi').on('click', onNewGameAi)
   $('.box').on('click', onMakeMove)
+  $('.box').hover(onHover)
   $('#playerStatsButton').on('click', onGetPlayerStats)
   $('#openPreviousGameButton').on('click', onGetPlayerGames)
   $('#playAgain').on('click', onPlayAgain)
@@ -154,6 +153,7 @@ const addHandler = function () {
   $('#startOnlineGameButton').on('click', onStartOnlineGame)
   $('#startOnlinGameId').on('click', copyToClipBoard)
   $('#joinOnlineGame').on('submit', onJoinOnlineGame)
+  $('#body').on('click', onPlayAgain)
 }
 
 module.exports = {
