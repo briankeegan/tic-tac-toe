@@ -117,24 +117,27 @@ It is written with bootstrap, but styled in SCSS
   - [`index.scss`](./assets/styles/index.scss) This file imports and correctly orderes all other files in this directory.  It has no rules on it’s own
   - [`tttboarders.scss`](./assets/styles/tttboarders.scss) or tic-tac-toe-boarders, is how the board is created.  Using a mixin I was able to easily format the borders so that they only show on correct side, and are consistent.
 ##### JavaScript
+
 The [`./assets/scripts/`](./assets/scripts/) is generally (I’m only including what I edited or used) divided as follows:
-	-	[`config.js`](./assets/scripts/config.js) accesses the client side API created by [GA](https://generalassemb.ly/)
-	-	[`copyToClipBoard.js`](./assets/scripts/copyToClipBoard.js) is a single function as described
-	-	[`index.js`](./assets/scripts/index.js) is the access point for all functions.  Contains the different event listeners required in
-	-	[`store.js`](./assets/scripts/store.js)’s relevant data, authentication tokens, stored game, board and more
-	-	[`authentication/`](./assets/scripts/authentication/) contains all the account information, such as sign-in, sign-up, change-password and sign-out.  It is divided by:
-		1.	[`api.js`](./assets/scripts/game/api.js) or application programming interface is where JS sends ajax requests to client server
-1. 	[`events.js`](./assets/scripts/game/events.js) is where event listeners are added.
-		1.	[`ui.js`](./assets/scripts/game/ui.js) or user interface, is where the user is notified of success or failure of events.
+*  [`config.js`](./assets/scripts/config.js) accesses the client side API created by [GA](https://generalassemb.ly/)
+*  [`copyToClipBoard.js`](./assets/scripts/copyToClipBoard.js) is a single function as described
+*  [`index.js`](./assets/scripts/index.js) is the access point for all functions.  Contains the different event listeners required in
+*  [`store.js`](./assets/scripts/store.js)’s relevant data, authentication tokens, stored game, board and more
+*  [`authentication/`](./assets/scripts/authentication/) contains all the account information, such as sign-in, sign-up, change-password and sign-out.  It is divided by:
+  1.	[`api.js`](./assets/scripts/game/api.js) or application programming interface is where JS sends ajax requests to client server
+  1. 	[`events.js`](./assets/scripts/game/events.js) is where event listeners are added.
+  1.	[`ui.js`](./assets/scripts/game/ui.js) or user interface, is where the user is notified of success or failure of events.
 
-	-	[`game/`](./assets/scripts/game/)
-		1.	[`api.js`](./assets/scripts/game/api.js) or application programming interface is where JS sends ajax requests to client server
-1. 	[`events.js`](./assets/scripts/game/events.js) is where event listeners are added.
-		1.	[`ui.js`](./assets/scripts/game/ui.js) or user interface, is where the user is notified of success or failure of events.
-		1.	[`aiMove.js/`](./assets/scripts/game/aiMove.js)  Is a large function that controls exactly how the ai plays. Implemented in events
-		1.	[`logic.js/`](./assets/scripts/game/logic.js) contains the game logic, when and if a player may put a token in a particular place, and if they won / lost  / drew the game
 
-	-	[`multiplayer/`](./assets/scripts/multiplayer/) contains `ai/` and `events/` directories.  Eventually would like to combine into one `js` file and put in `game/`
+*  [`game/`](./assets/scripts/game/)
+  1.	[`api.js`](./assets/scripts/game/api.js) or application programming interface is where JS sends ajax requests to client server
+  1. 	[`events.js`](./assets/scripts/game/events.js) is where event listeners are added.
+  1.	[`ui.js`](./assets/scripts/game/ui.js) or user interface, is where the user is notified of success or failure of events.
+  1.	[`aiMove.js/`](./assets/scripts/game/aiMove.js)  Is a large function that controls exactly how the ai plays. Implemented in events
+  1.	[`logic.js/`](./assets/scripts/game/logic.js) contains the game logic, when and if a player may put a token in a particular place, and if they won / lost  / drew the game
+
+
+*  [`multiplayer/`](./assets/scripts/multiplayer/) contains `ai/` and `events/` directories.  Eventually would like to combine into one `js` file and put in `game/`
 
 
 
@@ -142,7 +145,7 @@ The [`./assets/scripts/`](./assets/scripts/) is generally (I’m only including 
 
 ### Process
 
-	I tried to commit small and frequently and for the most part did so.
+  -   I tried to commit small and frequently and for the most part did so.
 
   -   Steps taken
 	1.	Create basic Bootstrap layout
