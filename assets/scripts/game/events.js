@@ -132,6 +132,14 @@ const onHover = function () {
   }
 }
 
+const onPlayAgain = function () {
+  if (store.ai) {
+    onNewGameAi()
+  } else {
+    onNewGame()
+  }
+}
+
 const addHandler = function () {
   $('#newGame').on('click', onNewGame)
   $('#newGameAi').on('click', onNewGameAi)
@@ -139,11 +147,13 @@ const addHandler = function () {
   $('.box').hover(onHover)
   $('#playerStatsButton').on('click', onGetPlayerStats)
   $('#openPreviousGameButton').on('click', onGetPlayerGames)
+  $('#playAgain').on('click', onPlayAgain)
   // when modal is closed, reset content
   $('#openPreviousGameModal').on('hidden.bs.modal', onOpenPreviousGameModalClose)
   $('#startOnlineGameButton').on('click', onStartOnlineGame)
   $('#startOnlinGameId').on('click', copyToClipBoard)
   $('#joinOnlineGame').on('submit', onJoinOnlineGame)
+  $('#body').on('click', onPlayAgain)
 }
 
 module.exports = {
