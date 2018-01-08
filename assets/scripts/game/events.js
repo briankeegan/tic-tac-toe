@@ -142,10 +142,6 @@ const onPlayAgain = function () {
   }
 }
 
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
 const addHandler = function () {
   $('#newGame').on('click', onNewGame)
   $('#newGameAi').on('click', onNewGameAi)
