@@ -22,7 +22,8 @@ const onCreateGameWatcher = function () {
     }
   })
   gameWatcher.on('error', function (e) {
-    console.error('Error in game watcher', e)
+    // console.error('Error in game watcher', e)
+    $('#message').text('Error in game watcher')
   })
 }
 

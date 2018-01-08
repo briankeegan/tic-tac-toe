@@ -12,7 +12,8 @@ const setUpBoard = function (data) {
   })
   const status = logic.checkForWinner()
   $('#message').text(status[0])
-  if (Array.isArray(status[1])) {
+  if (status[2]) {
+    $('.play-again-h1').show()
     status[1].forEach((index, i) => {
       const box = document.querySelector('.box' + index)
       const text = box.innerHTML
@@ -70,6 +71,7 @@ const processGames = function (games, callback, element) {
 }
 
 const newGameSuccess = function (data) {
+  $('.play-again-h1').hide()
   $('.navbar-collapse').collapse('hide')
   setUpBoard(data)
   $('#message').text('New game created.  Good luck!')
@@ -77,10 +79,12 @@ const newGameSuccess = function (data) {
 }
 
 const newGameFailure = function () {
+  $('.play-again-h1').hide()
   $('#message').text('Failed to create New Game')
 }
 
 const newGameAiSuccess = function (data) {
+  $('.play-again-h1').hide()
   store.ai = true
   $('.navbar-collapse').collapse('hide')
   setUpBoard(data)
@@ -88,6 +92,7 @@ const newGameAiSuccess = function (data) {
 }
 
 const newGameAiFailure = function () {
+  $('.play-again-h1').hide()
   $('#message').text('Failed to create New Game With Friendly AI')
 }
 
@@ -105,19 +110,23 @@ const getPlayerGamesSuccess = function (data) {
 }
 
 const getPlayerStatsFailure = function () {
+  $('.play-again-h1').hide()
   $('#message').text('failed to get games')
 }
 
 const openPreviousGameSuccess = function (data) {
+  $('.play-again-h1').hide()
   store.ai = false
   $('.navbar-collapse').collapse('hide')
   setUpBoard(data)
 }
 const openPreviousGameFailure = function () {
+  $('.play-again-h1').hide()
   $('#message').text('Unable to retrieve game')
 }
 
 const startOnlinGameSuccess = function (data) {
+  $('.play-again-h1').hide()
   store.ai = false
   document.getElementById('secretInput').value = store.game.id
   $('#message').text('Waiting for player to join...')
@@ -125,11 +134,13 @@ const startOnlinGameSuccess = function (data) {
 }
 
 const joinOnlineGameSuccess = function (data) {
+  $('.play-again-h1').hide()
   setUpBoard(data)
   $('#message').text(`Successfully joined game with ${data.game.player_x.email}`)
 }
 
 const joinOnlineGameFailure = function (data) {
+  $('.play-again-h1').hide()
   $('#message').text('Unable to join game.  Please check game ID#')
 }
 
@@ -138,6 +149,7 @@ const sendMoveSuccess = function (data) {
 }
 
 const sendMoveFailure = function (data) {
+  if (data === 'keep') return
   if (typeof data === 'string') $('#message').text(data)
   else $('#message').text('Unable to make move')
 }

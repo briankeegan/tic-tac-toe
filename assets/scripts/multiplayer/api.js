@@ -46,7 +46,8 @@ const resourceWatcher = function (timeout) {
         es.onerror = makeHandler(handler, close)
         break
       default:
-        console.error('Unknown event type:' + event)
+        // console.error('Unknown event type:' + event)
+        $('#message').text('Error playing multiplayer')
         break
     }
   }
