@@ -215,3 +215,5 @@ I would like to thank:
 - 	[GA](https://generalassemb.ly/) staff for re-deploying gameplay APIU after crash! Also for creating API, and templateI used for the whole project.
 
 -	[bookcasey](https://stackoverflow.com/users/1052923/bookcasey) for his answer about SASS/SCSS [percentage-loops](https://stackoverflow.com/questions/15994136/sass-or-less-keyframes-percentage-loop)
+
+-[wiki how](https://www.wikihow.com/Win-at-Tic-Tac-Toe)'s how to win at tic-tac-toe.  I based AI logic off of this site.
