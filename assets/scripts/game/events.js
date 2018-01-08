@@ -124,10 +124,19 @@ const onJoinOnlineGame = function (event) {
     .catch(ui.joinOnlineGameFailure)
 }
 
+const onHover = function () {
+  const insideBox = this.innerHTML
+  if (insideBox) {
+    this.style.cursor = 'not-allowed'
+  } else {
+    this.style.cursor = 'pointer'
+  }
+}
 const addHandler = function () {
   $('#newGame').on('click', onNewGame)
   $('#newGameAi').on('click', onNewGameAi)
   $('.box').on('click', onMakeMove)
+  $('.box').hover(onHover)
   $('#playerStatsButton').on('click', onGetPlayerStats)
   $('#openPreviousGameButton').on('click', onGetPlayerGames)
   // when modal is closed, reset content
