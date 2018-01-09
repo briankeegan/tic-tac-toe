@@ -49,9 +49,6 @@
                   <li><a href="#" id="newGame">Start Local Game</a></li>
                   <li><a href="#" id="newGameAi">Play AI</a></li>
                   <li><a href="#" data-toggle="modal" data-target="#openPreviousGameModal" id="openPreviousGameButton">Open Previous Local Game</a></li>
-                  <li class="divider"></li>
-                  <li><a href="#" data-toggle="modal" data-target="#startOnlineGameModal" id="startOnlineGameButton">Start Online Game</a></li>
-                  <li><a href="#" data-toggle="modal" data-target="#joinOnlineGameModal" id="joinOnlineGameButton">Join Online Game</a></li>
                 </ul>
               </li>
               <li><a href="#" class="after-sign-in" data-toggle="modal" data-target="#playerStatsModal" id="playerStatsButton">Player Stats</a></li>
@@ -189,12 +186,11 @@
                     </button>
               </div>
               <div class="modal-body">
-                  <p>Games played*:<span id="played"></span></p>
+                  <p>Games played:<span id="played"></span></p>
                   <p>Games won:<span id="won"></span></p>
                   <p>Games lost:<span id="lost"></span></p>
                   <p>Games tied:<span id="tied"></span></p>
-                  <p>Unfinished Games*:<span id="unfinished"></span></p>
-                  *Excludes unfinished online games
+                  <p>Unfinished Games:<span id="unfinished"></span></p>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -213,7 +209,7 @@
                     </button>
               </div>
               <div class="modal-body">
-                <p>'You' refers to the player that logged in.  Said player will always be player 'x' unless they join an online game hosted by another player.  Win / Loss indication are for the logged in players, as are stats</p>
+                <p>'You' refers to the player that logged in.  Said player will always be player 'x'.  Win / Loss indication are for the logged in players, as are stats</p>
                 <p>If you would like to learn more about my process please checkout the <a href="https://github.com/briankeegan/tic-tac-toe/blob/master/README.md" target="_blank">README.md</a> section for <a href="https://github.com/briankeegan/tic-tac-toe" target="_blank">this repo</a> on <a href="https://github.com/briankeegan/" target="_blank">my github</a> page!</p>
               </div>
               <div class="modal-footer">
@@ -236,51 +232,6 @@
               </div>
               <div class="modal-body">
                 <span id="gameinfo"></span>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- startOnlineGameModal -->
-        <div class="modal fade" id="startOnlineGameModal" tabindex="-1" role="dialog" aria-labelledby="startOnlineGameModal" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h2 class="modal-title">Start Online Game</h2>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-              </div>
-              <div class="modal-body">
-                <p>To start online game send unique number to a friend so they can join your game!</p>
-                <p>Game ID#: <input type="number" id="secretInput" class="secret"/> <a href="#" id="startOnlinGameId">Copy #</a></p>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- joinOnlineGameModal -->
-        <div class="modal fade" id="joinOnlineGameModal" tabindex="-1" role="dialog" aria-labelledby="joinOnlineGameModal" aria-hidden="true">
-          <div class="modal-dialog" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h2 class="modal-title">Join Online Game</h2>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-              </div>
-              <div class="modal-body">
-                <form id="joinOnlineGame">
-                  <p>To join online game enter unique game number you got from a friend!</p>
-                  <p>Game ID#:
-                    <input type="number" name="game[id]" id="joinId" placeholder="#" class="secret" required />
-                    <input type="submit" class="btn btn-primary" value="Join game!" />
-                  </p>
-                </form>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
