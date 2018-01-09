@@ -125,25 +125,6 @@ const openPreviousGameFailure = function () {
   $('#message').text('Unable to retrieve game')
 }
 
-const startOnlinGameSuccess = function (data) {
-  $('.play-again-h1').hide()
-  store.ai = false
-  document.getElementById('secretInput').value = store.game.id
-  $('#message').text('Waiting for player to join...')
-  store.isWaiting = true
-}
-
-const joinOnlineGameSuccess = function (data) {
-  $('.play-again-h1').hide()
-  setUpBoard(data)
-  $('#message').text(`Successfully joined game with ${data.game.player_x.email}`)
-}
-
-const joinOnlineGameFailure = function (data) {
-  $('.play-again-h1').hide()
-  $('#message').text('Unable to join game.  Please check game ID#')
-}
-
 const sendMoveSuccess = function (data) {
   setUpBoard(data)
 }
@@ -164,9 +145,6 @@ module.exports = {
   openPreviousGameSuccess,
   getPlayerGamesSuccess,
   openPreviousGameFailure,
-  startOnlinGameSuccess,
-  joinOnlineGameSuccess,
-  joinOnlineGameFailure,
   sendMoveSuccess,
   sendMoveFailure
 }

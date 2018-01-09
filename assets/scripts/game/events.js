@@ -1,10 +1,7 @@
 'use strict'
 
-const getFormFields = require(`../../../lib/get-form-fields`)
 const api = require(`./api`)
 const ui = require(`./ui`)
-const copyToClipBoard = require('../copyToClipBoard')
-const multiplayerEvents = require('../multiplayer/events')
 const aiMove = require('./aiMove')
 const store = require('../store')
 
@@ -35,23 +32,7 @@ const onMakeMove = function () {
   if (store.isWaiting) return
   const index = this.dataset.index
   const move = logic.makeMove(index, this)
-  // Playing online
-  if (store.game && (store.game.player_o || store.game.player_o_id)) {
-    const message = logic.makeMoveOnline(index, this)
-    $('#message').text(message)
-    // this is the route I want to take, but I can't test right now...
-    // I will also change the logic file to match
-
-    // const onlineMove = logic.makeMoveOnline(index, this)
-    // if (typeof onlineMove !== 'string') {
-    //   api.sendMove(onlineMove)
-    //     .then(ui.sendMoveSuccess)
-    //     .catch(ui.sendMoveFailure)
-    // } else {
-    //   ui.sendMoveFailure(onlineMove)
-    // }
-    // Playing AI
-  } else if (store.ai) {
+  if (store.ai) {
     if (typeof move !== 'string') {
       api.sendMove(move)
         .then(ui.sendMoveSuccess)
@@ -102,27 +83,6 @@ const onOpenPreviousGameModalClose = function () {
   $('#gameinfo').empty()
 }
 
-const onStartOnlineGame = function () {
-  api.newGame()
-    .then(ui.newGameSuccess)
-    .then(ui.startOnlinGameSuccess)
-    .then(multiplayerEvents.onCreateGameWatcher)
-    .catch(ui.newGameFailure)
-}
-
-const onJoinOnlineGame = function (event) {
-  event.preventDefault()
-  const data = getFormFields(this)
-  const id = data.game.id
-  this.reset()
-  $('.navbar-collapse').collapse('hide')
-  $('#joinOnlineGameModal').modal('toggle')
-  api.joinOnlineGame(id)
-    .then(ui.joinOnlineGameSuccess)
-    .then(multiplayerEvents.onCreateGameWatcher)
-    .catch(ui.joinOnlineGameFailure)
-}
-
 const onHover = function () {
   const insideBox = this.innerHTML
   if (insideBox) {
@@ -150,9 +110,6 @@ const addHandler = function () {
   $('#playAgain').on('click', onPlayAgain)
   // when modal is closed, reset content
   $('#openPreviousGameModal').on('hidden.bs.modal', onOpenPreviousGameModalClose)
-  $('#startOnlineGameButton').on('click', onStartOnlineGame)
-  $('#startOnlinGameId').on('click', copyToClipBoard)
-  $('#joinOnlineGame').on('submit', onJoinOnlineGame)
   $('#body').on('click', onPlayAgain)
 }
 

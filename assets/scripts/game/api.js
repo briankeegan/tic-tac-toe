@@ -44,20 +44,9 @@ const openPreviousGame = function (id) {
   })
 }
 
-const joinOnlineGame = function (id) {
-  return $.ajax({
-    url: config.apiOrigin + '/games/' + id,
-    method: 'PATCH',
-    headers: {
-      Authorization: 'Token token=' + store.user1.token
-    }
-  })
-}
-
 module.exports = {
   getPlayerStats,
   newGame,
   sendMove,
-  openPreviousGame,
-  joinOnlineGame
+  openPreviousGame
 }
