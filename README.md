@@ -210,7 +210,7 @@ I would like to thank:
 
 - [Ted](https://github.com/TedCart) for inadvertently solving display player_o's user name porblem.
 
-- 	[Rebecca](https://github.com/rcoras) & [Sarah](https://github.com/smb2255) for coding and climbing.  Parallel work is very motivating!
+- 	[Rebecca](https://github.com/rcoras) & [Sarah](https://github.com/smb2255) for coding and climbing.  Parallel work is very motivating!  And Rebecca thank you for testing my code!  You found a strange and an awesome bug!
 
 - 	[GA](https://generalassemb.ly/) staff for re-deploying gameplay APIU after crash! Also for creating API, and templateI used for the whole project.
 
