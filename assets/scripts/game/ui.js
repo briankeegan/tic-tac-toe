@@ -14,11 +14,13 @@ const setUpBoard = function (data) {
   $('#message').text(status[0])
   if (status[2]) {
     $('.play-again-h1').show()
-    status[1].forEach((index, i) => {
-      const box = document.querySelector('.box' + index)
-      const text = box.innerHTML
-      box.innerHTML = `<div class="winner delay${i}">${text}</div>`
-    })
+    if (Array.isArray(status[1])) {
+      status[1].forEach((index, i) => {
+        const box = document.querySelector('.box' + index)
+        const text = box.innerHTML
+        box.innerHTML = `<div class="winner delay${i}">${text}</div>`
+      })
+    }
   }
 }
 
