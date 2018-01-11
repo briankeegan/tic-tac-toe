@@ -109,9 +109,9 @@ const aiGetMove = function (board) {
     // ---
     // xox
     // ---
-    return getRandomMove(emptyCorner)
+    return emptyCorner.length ? getRandomMove(emptyCorner) : getRandomMove(emptySpots)
   }
-  return emptyCorner.length ? getRandomMove(emptyCorner) : (findEmptySpot(board))
+  return emptyCorner.length ? getRandomMove(emptyCorner) : getRandomMove(emptySpots)
 }
 
 const aiMove = function () {
