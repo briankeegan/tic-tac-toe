@@ -84,9 +84,11 @@ const aiGetMove = function (board) {
   // --x
   if (emptyCorner.length === 2) {
     if ((emptyCorner[0] === 0) && (emptyCorner[1] === 8)) {
+      if (board[4] === 'x') return getRandomMove(emptyCorner)
       return getRandomMove(emptyEdge)
     }
     if ((emptyCorner[0] === 2) && (emptyCorner[1] === 6)) {
+      if (board[4] === 'x') return getRandomMove(emptyCorner)
       return getRandomMove(emptyEdge)
     }
   }
